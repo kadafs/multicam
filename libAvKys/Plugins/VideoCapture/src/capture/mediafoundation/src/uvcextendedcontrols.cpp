@@ -28,6 +28,7 @@
     static const GUID name = {l, w1, w2, {b1, b2, b3, b4, b5, b6, b7, b8}}
 
 AK_DEFINE_GUID(KSPROPERTYSETID_ExtendedCameraControl, 0x1cb79112, 0xb8f4, 0x4666, 0x80, 0xb3, 0x57, 0x9e, 0x35, 0x1f, 0x3c, 0x16);
+AK_DEFINE_GUID(IID_IKsControl, 0x28f54883, 0x1061, 0x11d2, 0x8f, 0x78, 0x00, 0x00, 0xf8, 0x01, 0x59, 0x97);
 
 #define KSPROPERTY_CAMERACONTROL_EXTENDED_SCENEMODE           7
 #define KSPROPERTY_CAMERACONTROL_EXTENDED_FOCUSPRIORITY       19

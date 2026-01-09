@@ -22,6 +22,9 @@
 
 #include <qrgb.h>
 
+#include <QVariant>
+#include <QDebug>
+
 #include "akpacketbase.h"
 #include "akvideocaps.h"
 
@@ -157,6 +160,6 @@ class AKCOMMONS_EXPORT AkVideoPacket: public AkPacketBase
 
 AKCOMMONS_EXPORT QDebug operator <<(QDebug debug, const AkVideoPacket &packet);
 
-Q_DECLARE_METATYPE(AkVideoPacket)
+// Q_DECLARE_METATYPE(AkVideoPacket)
 
 #endif // AKVIDEOPACKET_H

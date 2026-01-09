@@ -24,6 +24,7 @@
 #include <akvideocaps.h>
 #include <akvideoconverter.h>
 #include <akvideopacket.h>
+#include <vector>
 
 #include "oilpaintelement.h"
 
@@ -79,7 +80,7 @@ AkPacket OilPaintElement::iVideoStream(const AkVideoPacket &packet)
 
     int radius = qMax(this->d->m_radius, 1);
     int scanBlockLen = (radius << 1) + 1;
-    const QRgb *scanBlock[scanBlockLen];
+    std::vector<const QRgb *> scanBlock(scanBlockLen);
     int histogram[256];
 
     for (int y = 0; y < src.caps().height(); y++) {

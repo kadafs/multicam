@@ -288,7 +288,7 @@ class AkVideoMixerPrivate
                 auto dst_line_z = dst.line(this->m_cdp.planeZi, y) + this->m_cdp.ziOffset;
                 auto dst_line_a = dst.line(this->m_cdp.planeAi, y) + this->m_cdp.aiOffset;
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int x = dp.oX; x < dp.oWidth; ++x) {
                     int &xs_x = dp.srcWidthOffsetX[x];
                     int &xs_y = dp.srcWidthOffsetY[x];
@@ -400,7 +400,7 @@ class AkVideoMixerPrivate
                                                     &x);
                 }
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int i = x; i < dp.oWidth; ++i) {
                     auto &xi = src_line_x[dp.srcWidthOffsetX[i]];
                     auto &yi = src_line_y[dp.srcWidthOffsetY[i]];
@@ -440,7 +440,7 @@ class AkVideoMixerPrivate
                 auto dst_line_z = dst.line(this->m_cdp.planeZi, y) + this->m_cdp.ziOffset;
                 auto dst_line_a = dst.line(this->m_cdp.planeAi, y) + this->m_cdp.aiOffset;
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int x = dp.oX; x < dp.oWidth; ++x) {
                     int &xs_x = dp.srcWidthOffsetX[x];
                     int &xs_y = dp.srcWidthOffsetY[x];
@@ -536,7 +536,7 @@ class AkVideoMixerPrivate
                 auto dst_line_x = dst.line(this->m_cdp.planeXi, y) + this->m_cdp.xiOffset;
                 auto dst_line_a = dst.line(this->m_cdp.planeAi, y) + this->m_cdp.aiOffset;
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int x = dp.oX; x < dp.oWidth; ++x) {
                     int &xs_x = dp.srcWidthOffsetX[x];
                     int &xs_a = dp.srcWidthOffsetA[x];
@@ -612,7 +612,7 @@ class AkVideoMixerPrivate
                                                     &x);
                 }
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int i = x; i < dp.oWidth; ++i) {
                     auto &xi = src_line_x[dp.srcWidthOffsetX[i]];
                     auto &ai = src_line_a[dp.srcWidthOffsetA[i]];
@@ -642,7 +642,7 @@ class AkVideoMixerPrivate
                 auto dst_line_x = dst.line(this->m_cdp.planeXi, y) + this->m_cdp.xiOffset;
                 auto dst_line_a = dst.line(this->m_cdp.planeAi, y) + this->m_cdp.aiOffset;
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int x = dp.oX; x < dp.oWidth; ++x) {
                     int &xs_x = dp.srcWidthOffsetX[x];
                     int &xs_a = dp.srcWidthOffsetA[x];
@@ -718,7 +718,7 @@ class AkVideoMixerPrivate
                 auto dst_line_z = dst.line(this->m_cdp.planeZi, y) + this->m_cdp.ziOffset;
                 auto dst_line_a = dst.line(this->m_cdp.planeAi, y) + this->m_cdp.aiOffset;
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int x = dp.oX; x < dp.oWidth; ++x) {
                     auto xs = (x * dp.iDiffX + dp.oMultX) / dp.oDiffX;
 
@@ -834,7 +834,7 @@ class AkVideoMixerPrivate
                                                       dst_line_a,
                                                       &x);
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int i = x; i < dp.oWidth; ++i) {
                     auto xs = (i * dp.iDiffX + dp.oMultX) / dp.oDiffX;
 
@@ -886,7 +886,7 @@ class AkVideoMixerPrivate
                 auto dst_line_z = dst.line(this->m_cdp.planeZi, y) + this->m_cdp.ziOffset;
                 auto dst_line_a = dst.line(this->m_cdp.planeAi, y) + this->m_cdp.aiOffset;
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int x = dp.oX; x < dp.oWidth; ++x) {
                     auto xs = (x * dp.iDiffX + dp.oMultX) / dp.oDiffX;
 
@@ -984,7 +984,7 @@ class AkVideoMixerPrivate
                 auto dst_line_x = dst.line(this->m_cdp.planeXi, y) + this->m_cdp.xiOffset;
                 auto dst_line_a = dst.line(this->m_cdp.planeAi, y) + this->m_cdp.aiOffset;
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int x = dp.oX; x < dp.oWidth; ++x) {
                     auto xs = (x * dp.iDiffX + dp.oMultX) / dp.oDiffX;
 
@@ -1064,7 +1064,7 @@ class AkVideoMixerPrivate
                                                       dst_line_a,
                                                       &x);
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int i = x; i < dp.oWidth; ++i) {
                     auto xs = (i * dp.iDiffX + dp.oMultX) / dp.oDiffX;
 
@@ -1102,7 +1102,7 @@ class AkVideoMixerPrivate
                 auto dst_line_x = dst.line(this->m_cdp.planeXi, y) + this->m_cdp.xiOffset;
                 auto dst_line_a = dst.line(this->m_cdp.planeAi, y) + this->m_cdp.aiOffset;
 
-                #pragma omp simd if(dp.paralelize)
+                AK_OMP_SIMD_IF(dp.paralelize)
                 for (int x = dp.oX; x < dp.oWidth; ++x) {
                     auto xs = (x * dp.iDiffX + dp.oMultX) / dp.oDiffX;
 

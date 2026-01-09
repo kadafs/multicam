@@ -1248,8 +1248,7 @@ AkCaps CaptureMMFPrivate::capsFromMediaType(IMFMediaType *mediaType,
     if (mirror)
         *mirror = srcLineSize < 0;
 
-    WINBOOL isCompressed = FALSE;
-    mediaType->IsCompressedFormat(&isCompressed);
+    BOOL isCompressed = !rawFmtToAkFmt->contains(subtype);
 
     if (isRaw)
         *isRaw = !isCompressed;

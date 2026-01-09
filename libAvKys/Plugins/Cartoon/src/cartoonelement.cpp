@@ -28,6 +28,7 @@
 #include <akvideoconverter.h>
 #include <akvideomixer.h>
 #include <akvideopacket.h>
+#include <vector>
 
 #include "cartoonelement.h"
 
@@ -320,8 +321,7 @@ void CartoonElementPrivate::updatePalette(const AkVideoPacket &packet,
     using WeightType = quint64;
 
     // Create a histogram of 66k colors.
-    WeightType histogram[PALETTE_SIZE];
-    memset(histogram, 0, sizeof(WeightType) * PALETTE_SIZE);
+    std::vector<WeightType> histogram(PALETTE_SIZE, 0);
 
     for (int y = 0; y < packet.caps().height(); y++) {
         auto line = reinterpret_cast<const QRgb *>(packet.constLine(0, y));
@@ -332,7 +332,7 @@ void CartoonElementPrivate::updatePalette(const AkVideoPacket &packet,
     }
 
     int colorDiff2 = colorDiff * colorDiff;
-    quint16 palette[ncolors];
+    std::vector<quint16> palette(ncolors);
     WeightType ceilWeight = std::numeric_limits<WeightType>::max();
     int j = 0;
 
@@ -389,7 +389,7 @@ void CartoonElementPrivate::updatePalette(const AkVideoPacket &packet,
     // Create a look-up table for speed-up the conversion from 16-24 bits
     // to palettized format.
     for (int i = 0; i < PALETTE_SIZE; i++) {
-        auto color = this->nearestColor(palette, j, i);
+        auto color = this->nearestColor(palette.data(), j, i);
         this->m_palette[i] = this->rgb16Torgb24(color);
     }
 }
