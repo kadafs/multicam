@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2024  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #ifndef ACOMPRESSEDKAUDIOPACKET_H
@@ -33,7 +33,17 @@ using AkCompressedAudioPackets = QVector<AkCompressedAudioPacket>;
 class AKCOMMONS_EXPORT AkCompressedAudioPacket: public AkPacketBase
 {
     Q_OBJECT
-    Q_FLAGS(AudioPacketTypeFlag)
+    public:
+        enum AudioPacketTypeFlag
+        {
+            AudioPacketTypeFlag_None     = 0x0,
+            AudioPacketTypeFlag_Header   = 0x1,
+            AudioPacketTypeFlag_KeyFrame = 0x2,
+        };
+        Q_DECLARE_FLAGS(AudioPacketTypeFlags, AudioPacketTypeFlag)
+        Q_FLAG(AudioPacketTypeFlags)
+        Q_ENUM(AudioPacketTypeFlag)
+
     Q_PROPERTY(AkCompressedAudioCaps caps
                READ caps
                CONSTANT)
@@ -45,17 +55,6 @@ class AKCOMMONS_EXPORT AkCompressedAudioPacket: public AkPacketBase
                WRITE setFlags
                RESET resetFlags
                NOTIFY flagsChanged)
-
-    public:
-        enum AudioPacketTypeFlag
-        {
-            AudioPacketTypeFlag_None     = 0x0,
-            AudioPacketTypeFlag_Header   = 0x1,
-            AudioPacketTypeFlag_KeyFrame = 0x2,
-        };
-        Q_DECLARE_FLAGS(AudioPacketTypeFlags, AudioPacketTypeFlag)
-        Q_FLAG(AudioPacketTypeFlags)
-        Q_ENUM(AudioPacketTypeFlag)
 
         AkCompressedAudioPacket(QObject *parent=nullptr);
         AkCompressedAudioPacket(const AkCompressedAudioCaps &caps,
@@ -92,7 +91,8 @@ class AKCOMMONS_EXPORT AkCompressedAudioPacket: public AkPacketBase
 
 AKCOMMONS_EXPORT QDebug operator <<(QDebug debug, const AkCompressedAudioPacket &packet);
 
-Q_DECLARE_METATYPE(AkCompressedAudioPacket)
-Q_DECLARE_METATYPE(AkCompressedAudioPacket::AudioPacketTypeFlag)
+// Q_DECLARE_METATYPE(AkCompressedAudioPacket)
+// Q_DECLARE_METATYPE(AkCompressedAudioPacket::AudioPacketTypeFlag)
 
 #endif // AKCOMPRESSEDAUDIOPACKET_H
+

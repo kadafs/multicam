@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2016  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #ifndef ACOMPRESSEDKVIDEOPACKET_H
@@ -33,7 +33,17 @@ using AkCompressedVideoPackets = QVector<AkCompressedVideoPacket>;
 class AKCOMMONS_EXPORT AkCompressedVideoPacket: public AkPacketBase
 {
     Q_OBJECT
-    Q_FLAGS(VideoPacketTypeFlag)
+    public:
+        enum VideoPacketTypeFlag
+        {
+            VideoPacketTypeFlag_None     = 0x0,
+            VideoPacketTypeFlag_Header   = 0x1,
+            VideoPacketTypeFlag_KeyFrame = 0x2,
+        };
+        Q_DECLARE_FLAGS(VideoPacketTypeFlags, VideoPacketTypeFlag)
+        Q_FLAG(VideoPacketTypeFlags)
+        Q_ENUM(VideoPacketTypeFlag)
+
     Q_PROPERTY(AkCompressedVideoCaps caps
                READ caps
                CONSTANT)
@@ -45,17 +55,6 @@ class AKCOMMONS_EXPORT AkCompressedVideoPacket: public AkPacketBase
                WRITE setFlags
                RESET resetFlags
                NOTIFY flagsChanged)
-
-    public:
-        enum VideoPacketTypeFlag
-        {
-            VideoPacketTypeFlag_None     = 0x0,
-            VideoPacketTypeFlag_Header   = 0x1,
-            VideoPacketTypeFlag_KeyFrame = 0x2,
-        };
-        Q_DECLARE_FLAGS(VideoPacketTypeFlags, VideoPacketTypeFlag)
-        Q_FLAG(VideoPacketTypeFlags)
-        Q_ENUM(VideoPacketTypeFlag)
 
         AkCompressedVideoPacket(QObject *parent=nullptr);
         AkCompressedVideoPacket(const AkCompressedVideoCaps &caps,
@@ -92,7 +91,8 @@ class AKCOMMONS_EXPORT AkCompressedVideoPacket: public AkPacketBase
 
 AKCOMMONS_EXPORT QDebug operator <<(QDebug debug, const AkCompressedVideoPacket &packet);
 
-Q_DECLARE_METATYPE(AkCompressedVideoPacket)
-Q_DECLARE_METATYPE(AkCompressedVideoPacket::VideoPacketTypeFlag)
+// Q_DECLARE_METATYPE(AkCompressedVideoPacket)
+// Q_DECLARE_METATYPE(AkCompressedVideoPacket::VideoPacketTypeFlag)
 
 #endif // AKCOMPRESSEDVIDEOPACKET_H
+

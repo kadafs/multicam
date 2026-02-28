@@ -655,8 +655,8 @@
     </message>
     <message>
         <location filename="../qml/Contributors.qml" line="49"/>
-        <source>Thanks to all these cool people that helped contributing to Webcamoid all these years.</source>
-        <translation>여러 해 동안 Webcamoid에 기여해주신 모든 멋진 분들에게 감사드립니다.</translation>
+        <source>Thanks to all these cool people that helped contributing to Multicam all these years.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -863,7 +863,47 @@
         <translation>품질</translation>
     </message>
     <message>
-        <location filename="../qml/ImageCapture.qml" line="144"/>
+        <location filename="../qml/ImageCapture.qml" line="142"/>
+        <source>Flash settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="152"/>
+        <source>Use flash</source>
+        <translation type="unfinished">플래시 사용</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="155"/>
+        <source>Use flash when taking a photo</source>
+        <translation type="unfinished">사진 촬영 시 플래시 사용</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="164"/>
+        <source>Delay</source>
+        <translation type="unfinished">지연</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="167"/>
+        <source>Photo timer</source>
+        <translation type="unfinished">사진 타이머</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="168"/>
+        <source>The time to wait before the photo is taken</source>
+        <translation type="unfinished">사진 촬영 전 대기 시간</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="176"/>
+        <source>Now</source>
+        <translation type="unfinished">지금</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="219"/>
+        <source>%1 seconds</source>
+        <translation type="unfinished">%1초</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="247"/>
         <source>Select the folder to save your photos</source>
         <translation>사진을 저장할 폴더 선택</translation>
     </message>
@@ -891,18 +931,13 @@
     </message>
     <message>
         <location filename="../qml/LocalSettingsMenu.qml" line="43"/>
-        <source>Video capture settings</source>
-        <translation>비디오 캡처 설정</translation>
+        <source>Recording settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/LocalSettingsMenu.qml" line="44"/>
-        <source>Image capture settings</source>
-        <translation>이미지 캡처 설정</translation>
-    </message>
-    <message>
-        <location filename="../qml/LocalSettingsMenu.qml" line="51"/>
-        <source>Video recording settings</source>
-        <translation>비디오 녹화 설정</translation>
+        <source>Capture settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1136,7 +1171,7 @@
     <message>
         <location filename="../../src/clioptions.cpp" line="68"/>
         <source>Semi-colon separated list of paths to avoid loading.</source>
-        <extracomment>Blacklist of plugins that could have conflicts when loading in Webcamoid.</extracomment>
+        <extracomment>Blacklist of plugins that could have conflicts when loading in Multicam.</extracomment>
         <translation>불러오지 않을 경로 목록을 세미콜론으로 구분.</translation>
     </message>
     <message>
@@ -1689,7 +1724,7 @@
         <translation>최적화</translation>
     </message>
     <message>
-        <location filename="../../src/recording.cpp" line="1444"/>
+        <location filename="../../src/recording.cpp" line="1510"/>
         <source>%1/Video %2.%3</source>
         <translation>%1/비디오 %2.%3</translation>
     </message>
@@ -1773,7 +1808,7 @@
     <message>
         <location filename="../qml/ThirdPartyLicenses.qml" line="31"/>
         <source>3rd Party Licenses</source>
-        <extracomment>License for 3rd party components used in Webcamoid, like</extracomment>
+        <extracomment>License for 3rd party components used in Multicam, like</extracomment>
         <translation>제3자 라이선스</translation>
     </message>
     <message>
@@ -1900,8 +1935,8 @@
     </message>
     <message>
         <location filename="../qml/VCamInstallSucceededDialog.qml" line="40"/>
-        <source>Restart Webcamoid?</source>
-        <translation>Webcamoid 재시작?</translation>
+        <source>Restart Multicam?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2403,72 +2438,82 @@
         <translation>오디오 녹음</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="101"/>
+        <location filename="../qml/VideoRecording.qml" line="95"/>
+        <source>Use flash</source>
+        <translation type="unfinished">플래시 사용</translation>
+    </message>
+    <message>
+        <location filename="../qml/VideoRecording.qml" line="98"/>
+        <source>Use flash when recording a video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/VideoRecording.qml" line="113"/>
         <source>Video quality</source>
         <translation>비디오 품질</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="110"/>
+        <location filename="../qml/VideoRecording.qml" line="122"/>
         <source>Output width</source>
         <translation>출력 너비</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="130"/>
+        <location filename="../qml/VideoRecording.qml" line="142"/>
         <source>Output height</source>
         <translation>출력 높이</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="150"/>
+        <location filename="../qml/VideoRecording.qml" line="162"/>
         <source>Output Frame rate</source>
         <translation>출력 프레임 속도</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="169"/>
+        <location filename="../qml/VideoRecording.qml" line="181"/>
         <source>Audio quality</source>
         <translation>오디오 품질</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="178"/>
+        <location filename="../qml/VideoRecording.qml" line="190"/>
         <source>Sample rate</source>
         <translation>샘플 레이트</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="198"/>
+        <location filename="../qml/VideoRecording.qml" line="210"/>
         <source>File format and codecs</source>
         <translation>파일 형식 및 코덱</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="208"/>
+        <location filename="../qml/VideoRecording.qml" line="220"/>
         <source>Configure the file format</source>
         <translation>파일 형식 구성</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="210"/>
+        <location filename="../qml/VideoRecording.qml" line="222"/>
         <source>Configure the file format for recording</source>
         <translation>녹화 파일 형식 구성</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="218"/>
+        <location filename="../qml/VideoRecording.qml" line="230"/>
         <source>Configure the video codec</source>
         <translation>비디오 코덱 구성</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="220"/>
+        <location filename="../qml/VideoRecording.qml" line="232"/>
         <source>Configure the video codec for recording</source>
         <translation>녹화 비디오 코덱 구성</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="228"/>
+        <location filename="../qml/VideoRecording.qml" line="240"/>
         <source>Configure the audio codec</source>
         <translation>오디오 코덱 구성</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="231"/>
+        <location filename="../qml/VideoRecording.qml" line="243"/>
         <source>Configure the audio codec for recording</source>
         <translation>녹화 오디오 코덱 구성</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="264"/>
+        <location filename="../qml/VideoRecording.qml" line="276"/>
         <source>Select the folder to save your videos</source>
         <translation>비디오를 저장할 폴더 선택</translation>
     </message>

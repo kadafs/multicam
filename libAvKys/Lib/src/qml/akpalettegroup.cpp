@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2020  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #include <QDir>
@@ -396,7 +396,7 @@ bool AkPaletteGroup::canWrite(const QString &paletteName)
     if (dataPaths.size() < 2)
         return true;
 
-    auto nonWritablePaths = dataPaths.mid(1) + QStringList {":/Webcamoid/share"};
+    auto nonWritablePaths = dataPaths.mid(1) + QStringList {":/multicam/share"};
     std::reverse(nonWritablePaths.begin(), nonWritablePaths.end());
 
     for (auto &path: nonWritablePaths) {
@@ -912,7 +912,7 @@ QString AkPaletteGroupPrivate::configFileForPalette(const QString &paletteName)
 
     auto dataPaths =
             QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)
-            + QStringList {":/Webcamoid/share"};
+            + QStringList {":/multicam/share"};
     std::reverse(dataPaths.begin(), dataPaths.end());
 
     for (auto &path: dataPaths) {
@@ -1226,3 +1226,4 @@ void AkPaletteGroupGlobalPrivate::loadDefaults()
 
 #include "akpalettegroup.moc"
 #include "moc_akpalettegroup.cpp"
+

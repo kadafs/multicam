@@ -1,20 +1,20 @@
-# Webcamoid, camera capture application.
+# Multicam, camera capture application.
 # Copyright (C) 2021  Gonzalo Exequiel Pedone
 #
-# Webcamoid is free software: you can redistribute it and/or modify
+# Multicam is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# Webcamoid is distributed in the hope that it will be useful,
+# Multicam is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+# along with Multicam. If not, see <http://www.gnu.org/licenses/>.
 #
-# Web-Site: http://webcamoid.github.io/
+# Web-Site: http://Multicam.github.io/
 
 cmake_minimum_required(VERSION 3.16)
 
@@ -71,15 +71,15 @@ set(PROJECT_SOURCES
     ../DefaultTheme.qrc
     ../colors.qrc
     ../icons.qrc
-    ../Webcamoid.qrc)
+    ../multicam.qrc)
 
 if (APPLE)
-    list(APPEND PROJECT_SOURCES ../WebcamoidInfo.plist
-                                ../share/themes/WebcamoidTheme/icons/webcamoid.icns)
-    set_source_files_properties(../share/themes/WebcamoidTheme/icons/webcamoid.icns PROPERTIES
+    list(APPEND PROJECT_SOURCES ../multicam.plist
+                                ../share/themes/MulticamTheme/icons/multicam.icns)
+    set_source_files_properties(../share/themes/MulticamTheme/icons/multicam.icns PROPERTIES
                                 MACOSX_PACKAGE_LOCATION Resources)
 elseif (WIN32)
-    list(APPEND PROJECT_SOURCES ../Webcamoid.rc)
+    list(APPEND PROJECT_SOURCES ../multicam.rc)
 endif ()
 
 qt_add_executable(StandAlone ${PROJECT_SOURCES})
@@ -87,27 +87,27 @@ enable_openmp(StandAlone)
 
 if (FAKE_APPLE)
     set_target_properties(StandAlone PROPERTIES
-                          OUTPUT_NAME Webcamoid)
+                          OUTPUT_NAME Multicam)
 elseif (APPLE)
     string(TIMESTAMP YEAR "%Y")
     set_target_properties(StandAlone PROPERTIES
-                          OUTPUT_NAME Webcamoid
+                          OUTPUT_NAME Multicam
                           MACOSX_BUNDLE TRUE
-                          MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/../WebcamoidInfo.plist
-                          MACOSX_BUNDLE_BUNDLE_NAME Webcamoid
+                          MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/../MulticamInfo.plist
+                          MACOSX_BUNDLE_BUNDLE_NAME Multicam
                           MACOSX_BUNDLE_BUNDLE_VERSION ${VERSION}
                           MACOSX_BUNDLE_COPYRIGHT "Copyright (C)  2011-${YEAR}  Gonzalo Exequiel Pedone"
                           MACOSX_BUNDLE_GUI_IDENTIFIER "${APP_IDENTIFIER}"
-                          MACOSX_BUNDLE_ICON_FILE webcamoid.icns
-                          MACOSX_BUNDLE_INFO_STRING "Webcamoid, The ultimate camera suite!"
-                          MACOSX_BUNDLE_LONG_VERSION_STRING "Webcamoid ${VERSION}"
+                          MACOSX_BUNDLE_ICON_FILE Multicam.icns
+                          MACOSX_BUNDLE_INFO_STRING "Multicam, The ultimate camera suite!"
+                          MACOSX_BUNDLE_LONG_VERSION_STRING "Multicam ${VERSION}"
                           MACOSX_BUNDLE_SHORT_VERSION_STRING ${VERSION})
 elseif (ANDROID)
     set_target_properties(StandAlone PROPERTIES
-                          OUTPUT_NAME Webcamoid)
+                          OUTPUT_NAME Multicam)
 else ()
     set_target_properties(StandAlone PROPERTIES
-                          OUTPUT_NAME webcamoid)
+                          OUTPUT_NAME multicam)
 endif ()
 
 if (WIN32)
@@ -161,8 +161,8 @@ string(REPLACE "." ";" ORGANIZATION_DOMAIN "${ORGANIZATION_IDENTIFIER}")
 list(REVERSE ORGANIZATION_DOMAIN)
 string(JOIN "." ORGANIZATION_DOMAIN ${ORGANIZATION_DOMAIN})
 
-add_definitions(-DCOMMONS_TARGET="webcamoid"
-                -DCOMMONS_APPNAME="Webcamoid"
+add_definitions(-DCOMMONS_TARGET="multicam"
+                -DCOMMONS_APPNAME="multicam"
                 -DCOMMONS_VERSION="${VERSION}"
                 -DORGANIZATION_DOMAIN="${ORGANIZATION_DOMAIN}"
                 -DBINDIR="${BINDIR}"
@@ -203,15 +203,15 @@ elseif (NOT ANDROID)
 endif ()
 
 if (WIN32)
-    install(FILES ../share/themes/WebcamoidTheme/icons/hicolor/256x256/webcamoid.ico
+    install(FILES ../share/themes/MulticamTheme/icons/hicolor/256x256/multicam.ico
             DESTINATION ${CMAKE_INSTALL_PREFIX})
 elseif (UNIX AND NOT (APPLE OR FAKE_APPLE) AND NOT ANDROID)
     file(GLOB_RECURSE ICONS
-         ../share/themes/WebcamoidTheme/*/webcamoid.png
-         ../share/themes/WebcamoidTheme/*/webcamoid.svg)
+         ../share/themes/MulticamTheme/*/multicam.png
+         ../share/themes/MulticamTheme/*/Multicam.svg)
 
     foreach (ICON IN LISTS ICONS)
-        file(RELATIVE_PATH ICON_DST ${CMAKE_CURRENT_SOURCE_DIR}/../share/themes/WebcamoidTheme ${ICON})
+        file(RELATIVE_PATH ICON_DST ${CMAKE_CURRENT_SOURCE_DIR}/../share/themes/MulticamTheme ${ICON})
         get_filename_component(INSTALL_DIR ${ICON_DST} DIRECTORY)
         string(APPEND INSTALL_DIR /apps)
         install(FILES ${ICON} DESTINATION ${DATAROOTDIR}/${INSTALL_DIR})
@@ -228,3 +228,4 @@ if (ANDROID)
         configure_file(${FILE} "${CMAKE_BINARY_DIR}/${BUILDDIR}/${FILE_DST}" COPYONLY)
     endforeach ()
 endif()
+

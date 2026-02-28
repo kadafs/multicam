@@ -1,0 +1,82 @@
+/* Multicam, camera capture application.
+ * Copyright (C) 2020  Gonzalo Exequiel Pedone
+ *
+ * Multicam is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Multicam is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Web-Site: http://Multicam.github.io/
+ */
+
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import Ak
+
+RowLayout {
+    id: iconLabel
+
+    property int leftPadding: 0
+    property int rightPadding: 0
+    property string iconName: ""
+    property alias iconSource: icon.source
+    property alias iconWidth: icon.width
+    property alias iconHeight: icon.height
+    property alias iconColor: icon.color
+    property int display: AbstractButton.TextBesideIcon
+    //property alias spacing: mainLayout.columnSpacing
+    property bool mirrored: false
+    property alias text: label.text
+    property alias font: label.font
+    property alias color: label.color
+    property alias elide: label.elide
+    property alias wrapMode: label.wrapMode
+    property int alignment: Qt.AlignHCenter | Qt.AlignVCenter
+
+    readonly property bool rtl: mirrored != (Qt.application.layoutDirection === Qt.RightToLeft)
+
+    Item {
+        width: iconLabel.leftPadding
+    }
+    GridLayout {
+        id: mainLayout
+        rowSpacing: columnSpacing
+        layoutDirection: iconLabel.rtl? Qt.RightToLeft: Qt.LeftToRight
+        columns: iconLabel.display == AbstractButton.TextUnderIcon? 1: 2
+        Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+
+        AkColorizedImage {
+            id: icon
+            color: label.color
+            visible: status == Image.Ready
+                        && iconLabel.display != AbstractButton.TextOnly
+            Layout.alignment: iconLabel.alignment
+            asynchronous: true
+            mipmap: true
+        }
+        Text {
+            id: label
+            visible: text && iconLabel.display != AbstractButton.IconOnly
+            horizontalAlignment: iconLabel.rtl? Text.AlignRight: Text.AlignLeft
+            elide: iconLabel.rtl? Text.ElideLeft: Text.ElideRight
+            linkColor: iconLabel.enabled?
+                           AkTheme.palette.active.link:
+                           AkTheme.palette.disabled.link
+           Layout.alignment: iconLabel.alignment
+           Layout.fillWidth: true
+        }
+    }
+    Item {
+        width: iconLabel.rightPadding
+    }
+}
+

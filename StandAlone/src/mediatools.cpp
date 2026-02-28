@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2015  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #include <iostream>
@@ -61,16 +61,16 @@
 #include "videoeffects.h"
 #include "videolayer.h"
 
-#define COMMONS_PROJECT_URL "https://webcamoid.github.io/"
-#define COMMONS_PROJECT_LICENSE_URL "https://raw.githubusercontent.com/webcamoid/webcamoid/master/COPYING"
-#define COMMONS_PROJECT_DOWNLOADS_URL "https://webcamoid.github.io/#downloads"
-#define COMMONS_PROJECT_ISSUES_URL "https://github.com/webcamoid/webcamoid/issues"
-#define COMMONS_PROJECT_COMMIT_URL "https://github.com/webcamoid/webcamoid/commit"
-#define COMMONS_PROJECT_DONATIONS_URL "https://webcamoid.github.io/donations"
-#define COMMONS_PROJECT_DOCUMENTATION_URL "https://github.com/webcamoid/webcamoid/wiki"
+#define COMMONS_PROJECT_URL "https://Multicam.github.io/"
+#define COMMONS_PROJECT_LICENSE_URL "https://raw.githubusercontent.com/Multicam/Multicam/master/COPYING"
+#define COMMONS_PROJECT_DOWNLOADS_URL "https://Multicam.github.io/#downloads"
+#define COMMONS_PROJECT_ISSUES_URL "https://github.com/Multicam/Multicam/issues"
+#define COMMONS_PROJECT_COMMIT_URL "https://github.com/Multicam/Multicam/commit"
+#define COMMONS_PROJECT_DONATIONS_URL "https://Multicam.github.io/donations"
+#define COMMONS_PROJECT_DOCUMENTATION_URL "https://github.com/Multicam/Multicam/wiki"
 #define COMMONS_COPYRIGHT_NOTICE "Copyright (C) 2011-2025  Gonzalo Exequiel Pedone"
 
-#define JNAMESPACE "org/webcamoid/webcamoidutils"
+#define JNAMESPACE "org/Multicam/Multicamutils"
 #define JCLASS(jclass) JNAMESPACE "/" #jclass
 #define JLCLASS(jclass) "L" JNAMESPACE "/" jclass ";"
 #define JCLASS_SUBTYPE(jclass, subtype) JCLASS(jclass) "$" #subtype
@@ -762,7 +762,7 @@ bool MediaTools::init(const CliOptions &cliOptions)
 
     jlong userPtr = intptr_t(this);
     this->d->m_callbacks =
-            QJniObject(JCLASS(WebcamoidUtils),
+            QJniObject(JCLASS(MulticamUtils),
                        "(J)V",
                        userPtr);
 #endif
@@ -781,8 +781,8 @@ bool MediaTools::init(const CliOptions &cliOptions)
     this->d->m_engine = new QQmlApplicationEngine();
 
     // Set theme.
-    this->d->m_engine->addImportPath(":/Webcamoid/share/themes");
-    QQuickStyle::setStyle("WebcamoidTheme");
+    this->d->m_engine->addImportPath(":/multicam/share/themes");
+    QQuickStyle::setStyle("MulticamTheme");
 
     this->d->m_engine->addImageProvider(QLatin1String("icons"),
                                         new IconsProvider);
@@ -800,9 +800,9 @@ bool MediaTools::init(const CliOptions &cliOptions)
             DownloadManagerPtr(new DownloadManager(this->d->m_engine));
 
 #ifndef DISABLE_UPDATES_CHECK
-    this->d->m_updates->watch("Webcamoid",
+    this->d->m_updates->watch("Multicam",
                               COMMONS_VERSION,
-                              "https://api.github.com/repos/webcamoid/webcamoid/releases/latest");
+                              "https://api.github.com/repos/Multicam/Multicam/releases/latest");
     this->d->m_updates->watch("VirtualCamera",
                               this->d->m_videoLayer->currentVCamVersion(),
                               this->d->m_videoLayer->vcamUpdateUrl());
@@ -1039,7 +1039,7 @@ void MediaTools::saveConfigs()
 void MediaTools::show()
 {
     this->d->m_engine->rootContext()->setContextProperty("mediaTools", this);
-    this->d->m_engine->load(QUrl(QStringLiteral("qrc:/Webcamoid/share/qml/main.qml")));
+    this->d->m_engine->load(QUrl(QStringLiteral("qrc:/multicam/share/qml/main.qml")));
 
     for (auto &obj: this->d->m_engine->rootObjects()) {
         // First, find where to enbed the UI.
@@ -1176,7 +1176,7 @@ MediaToolsPrivate::MediaToolsPrivate(MediaTools *self):
 void MediaToolsPrivate::registerTypes() const
 {
     qRegisterMetaType<MediaTools::AdType>("AdType");
-    qmlRegisterSingletonType<MediaTools>("Webcamoid", 1, 0, "MediaTools",
+    qmlRegisterSingletonType<MediaTools>("Multicam", 1, 0, "MediaTools",
                                           [] (QQmlEngine *qmlEngine,
                                               QJSEngine *jsEngine) -> QObject * {
         Q_UNUSED(qmlEngine)
@@ -1196,7 +1196,7 @@ void MediaToolsPrivate::registerNatives()
 
     QJniEnvironment jenv;
 
-    if (auto jclass = jenv.findClass(JCLASS(WebcamoidUtils))) {
+    if (auto jclass = jenv.findClass(JCLASS(MulticamUtils))) {
         static const QVector<JNINativeMethod> mediaToolsMethods {
             {"scanCompleted", "(JLjava/lang/String;Landroid/net/Uri;)V", reinterpret_cast<void *>(MediaToolsPrivate::scanCompleted)},
         };
@@ -1590,3 +1590,4 @@ QString MediaToolsLogger::readLog(quint64 lineStart) const
 }
 
 #include "moc_mediatools.cpp"
+

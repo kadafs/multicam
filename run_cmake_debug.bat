@@ -13,7 +13,7 @@ call "%VSPATH%\vcvarsall" amd64
 
 set PATH=%QTDIR%\bin;%TOOLSDIR%\bin;C:\Users\markk\AppData\Roaming\Python\Python314\Scripts;%PATH%
 
-set INSTALL_PREFIX=%CD%\webcamoid-data
+set INSTALL_PREFIX=%CD%\multicam-data
 set buildDir=build
 if exist "%buildDir%" rmdir /s /q "%buildDir%"
 mkdir "%buildDir%"
@@ -30,8 +30,13 @@ echo Building...
 cmake --build "%buildDir%" --target install >> cmake_output.txt 2>&1
 
 echo Deploying...
-windeployqt --verbose 2 --qmldir StandAlone\share\qml --multimedia --multimediawidgets "%INSTALL_PREFIX%\bin\webcamoid.exe" >> cmake_output.txt 2>&1
-windeployqt --verbose 2 --qmldir libAvKys\Lib\share\qml --multimedia --multimediawidgets "%INSTALL_PREFIX%\bin\webcamoid.exe" >> cmake_output.txt 2>&1
-windeployqt --verbose 2 --qmldir StandAlone\share\themes\WebcamoidTheme --multimedia --multimediawidgets "%INSTALL_PREFIX%\bin\webcamoid.exe" >> cmake_output.txt 2>&1
+windeployqt --verbose 2 --qmldir StandAlone\share\qml --multimedia --multimediawidgets "%INSTALL_PREFIX%\bin\multicam.exe" >> cmake_output.txt 2>&1
+windeployqt --verbose 2 --qmldir libAvKys\Lib\share\qml --multimedia --multimediawidgets "%INSTALL_PREFIX%\bin\multicam.exe" >> cmake_output.txt 2>&1
+windeployqt --verbose 2 --qmldir StandAlone\share\themes\MulticamTheme --multimedia --multimediawidgets "%INSTALL_PREFIX%\bin\multicam.exe" >> cmake_output.txt 2>&1
 
 type cmake_output.txt
+
+set QT_DEBUG_PLUGINS=1
+set QML_IMPORT_TRACE=1
+"%INSTALL_PREFIX%\bin\multicam.exe"
+

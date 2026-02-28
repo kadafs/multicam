@@ -1,0 +1,53 @@
+/* Multicam, camera capture application.
+ * Copyright (C) 2022  Gonzalo Exequiel Pedone
+ *
+ * Multicam is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Multicam is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Web-Site: http://Multicam.github.io/
+ */
+
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Templates as T
+import Ak
+
+T.VerticalHeaderView {
+    id: control
+    implicitWidth: contentWidth
+    implicitHeight: syncView? syncView.height: 0
+
+    delegate: Rectangle {
+        implicitWidth: Math.max(control.width,
+                                text.implicitWidth + 2 * cellPadding)
+        implicitHeight: text.implicitHeight + 2 * cellPadding
+        color: control.Material.backgroundColor
+
+        readonly property real cellPadding:
+            AkUnit.create(8 * AkTheme.controlScale, "dp").pixels
+
+        Text {
+            id: text
+            text: model[control.textRole]
+            width: parent.width
+            height: parent.height
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            color: enabled?
+                       AkTheme.palette.active.text:
+                       AkTheme.palette.disabled.text
+            font: AkTheme.fontSettings.h6
+        }
+    }
+}
+

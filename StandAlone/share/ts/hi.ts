@@ -655,8 +655,8 @@
     </message>
     <message>
         <location filename="../qml/Contributors.qml" line="49"/>
-        <source>Thanks to all these cool people that helped contributing to Webcamoid all these years.</source>
-        <translation>इन सभी शानदार लोगों का धन्यवाद जिन्होंने इन सभी वर्षों में वेबकैमोइड में योगदान देने में मदद की।</translation>
+        <source>Thanks to all these cool people that helped contributing to Multicam all these years.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -863,7 +863,47 @@
         <translation>गुणवत्ता</translation>
     </message>
     <message>
-        <location filename="../qml/ImageCapture.qml" line="144"/>
+        <location filename="../qml/ImageCapture.qml" line="142"/>
+        <source>Flash settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="152"/>
+        <source>Use flash</source>
+        <translation type="unfinished">फ़्लैश प्रयोग करें</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="155"/>
+        <source>Use flash when taking a photo</source>
+        <translation type="unfinished">फोटो लेते समय फ़्लैश प्रयोग करें</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="164"/>
+        <source>Delay</source>
+        <translation type="unfinished">विलंब</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="167"/>
+        <source>Photo timer</source>
+        <translation type="unfinished">फोटो टाइमर</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="168"/>
+        <source>The time to wait before the photo is taken</source>
+        <translation type="unfinished">फोटो लेने से पहले प्रतीक्षा का समय</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="176"/>
+        <source>Now</source>
+        <translation type="unfinished">अभी</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="219"/>
+        <source>%1 seconds</source>
+        <translation type="unfinished">%1 सेकंड</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="247"/>
         <source>Select the folder to save your photos</source>
         <translation>अपनी तस्वीरें सहेजने के लिए फ़ोल्डर चुनें</translation>
     </message>
@@ -891,18 +931,13 @@
     </message>
     <message>
         <location filename="../qml/LocalSettingsMenu.qml" line="43"/>
-        <source>Video capture settings</source>
-        <translation>वीडियो कैप्चर सेटिंग्स</translation>
+        <source>Recording settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/LocalSettingsMenu.qml" line="44"/>
-        <source>Image capture settings</source>
-        <translation>छवि कैप्चर सेटिंग्स</translation>
-    </message>
-    <message>
-        <location filename="../qml/LocalSettingsMenu.qml" line="51"/>
-        <source>Video recording settings</source>
-        <translation>वीडियो रिकॉर्डिंग सेटिंग्स</translation>
+        <source>Capture settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1518,7 +1553,7 @@
     <message>
         <location filename="../../src/clioptions.cpp" line="68"/>
         <source>Semi-colon separated list of paths to avoid loading.</source>
-        <extracomment>Blacklist of plugins that could have conflicts when loading in Webcamoid.</extracomment>
+        <extracomment>Blacklist of plugins that could have conflicts when loading in Multicam.</extracomment>
         <translation>लोडिंग से बचने के लिए पथों की अर्धविराम से अलग की गई सूची।</translation>
     </message>
     <message>
@@ -1527,7 +1562,7 @@
         <translation>%1 का एक नया उदाहरण खोलें।</translation>
     </message>
     <message>
-        <location filename="../../src/recording.cpp" line="1444"/>
+        <location filename="../../src/recording.cpp" line="1510"/>
         <source>%1/Video %2.%3</source>
         <translation>%1/वीडियो %2.%3</translation>
     </message>
@@ -1774,7 +1809,7 @@
     <message>
         <location filename="../qml/ThirdPartyLicenses.qml" line="31"/>
         <source>3rd Party Licenses</source>
-        <extracomment>License for 3rd party components used in Webcamoid, like</extracomment>
+        <extracomment>License for 3rd party components used in Multicam, like</extracomment>
         <translation>तृतीय-पक्ष लाइसेंस</translation>
     </message>
     <message>
@@ -1901,8 +1936,8 @@
     </message>
     <message>
         <location filename="../qml/VCamInstallSucceededDialog.qml" line="40"/>
-        <source>Restart Webcamoid?</source>
-        <translation>Webcamoid पुनः प्रारंभ करें?</translation>
+        <source>Restart Multicam?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2404,72 +2439,82 @@
         <translation>ऑडियो रिकॉर्ड करें</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="101"/>
+        <location filename="../qml/VideoRecording.qml" line="95"/>
+        <source>Use flash</source>
+        <translation type="unfinished">फ़्लैश प्रयोग करें</translation>
+    </message>
+    <message>
+        <location filename="../qml/VideoRecording.qml" line="98"/>
+        <source>Use flash when recording a video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/VideoRecording.qml" line="113"/>
         <source>Video quality</source>
         <translation>वीडियो गुणवत्ता</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="110"/>
+        <location filename="../qml/VideoRecording.qml" line="122"/>
         <source>Output width</source>
         <translation>आउटपुट चौड़ाई</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="130"/>
+        <location filename="../qml/VideoRecording.qml" line="142"/>
         <source>Output height</source>
         <translation>आउटपुट ऊंचाई</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="150"/>
+        <location filename="../qml/VideoRecording.qml" line="162"/>
         <source>Output Frame rate</source>
         <translation>आउटपुट फ़्रेम दर</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="169"/>
+        <location filename="../qml/VideoRecording.qml" line="181"/>
         <source>Audio quality</source>
         <translation>ऑडियो गुणवत्ता</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="178"/>
+        <location filename="../qml/VideoRecording.qml" line="190"/>
         <source>Sample rate</source>
         <translation>सैंपल दर</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="198"/>
+        <location filename="../qml/VideoRecording.qml" line="210"/>
         <source>File format and codecs</source>
         <translation>फ़ाइल प्रारूप और कोडेक</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="208"/>
+        <location filename="../qml/VideoRecording.qml" line="220"/>
         <source>Configure the file format</source>
         <translation>फ़ाइल प्रारूप कॉन्फ़िगर करें</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="210"/>
+        <location filename="../qml/VideoRecording.qml" line="222"/>
         <source>Configure the file format for recording</source>
         <translation>रिकॉर्डिंग के लिए फ़ाइल प्रारूप कॉन्फ़िगर करें</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="218"/>
+        <location filename="../qml/VideoRecording.qml" line="230"/>
         <source>Configure the video codec</source>
         <translation>वीडियो कोडेक कॉन्फ़िगर करें</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="220"/>
+        <location filename="../qml/VideoRecording.qml" line="232"/>
         <source>Configure the video codec for recording</source>
         <translation>रिकॉर्डिंग के लिए वीडियो कोडेक कॉन्फ़िगर करें</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="228"/>
+        <location filename="../qml/VideoRecording.qml" line="240"/>
         <source>Configure the audio codec</source>
         <translation>ऑडियो कोडेक कॉन्फ़िगर करें</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="231"/>
+        <location filename="../qml/VideoRecording.qml" line="243"/>
         <source>Configure the audio codec for recording</source>
         <translation>रिकॉर्डिंग के लिए ऑडियो कोडेक कॉन्फ़िगर करें</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="264"/>
+        <location filename="../qml/VideoRecording.qml" line="276"/>
         <source>Select the folder to save your videos</source>
         <translation>अपने वीडियो सहेजने के लिए फ़ोल्डर चुनें</translation>
     </message>

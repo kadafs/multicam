@@ -1,26 +1,29 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2016  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #ifndef AKAUDIOCAPS_H
 #define AKAUDIOCAPS_H
 
 #include <QObject>
+#include <QVariant>
+#include <QDebug>
+#include <QList>
 
 #include "akcommons.h"
 
@@ -30,33 +33,6 @@ class AkCaps;
 class AKCOMMONS_EXPORT AkAudioCaps: public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(SampleFormat format
-               READ format
-               WRITE setFormat
-               RESET resetFormat
-               NOTIFY formatChanged)
-    Q_PROPERTY(ChannelLayout layout
-               READ layout
-               WRITE setLayout
-               RESET resetLayout
-               NOTIFY layoutChanged)
-    Q_PROPERTY(bool planar
-               READ planar
-               WRITE setPlanar
-               RESET resetPlanar
-               NOTIFY planarChanged)
-    Q_PROPERTY(int rate
-               READ rate
-               WRITE setRate
-               RESET resetRate
-               NOTIFY rateChanged)
-    Q_PROPERTY(int bps
-               READ bps
-               CONSTANT)
-    Q_PROPERTY(int channels
-               READ channels
-               CONSTANT)
-
     public:
         enum SampleFormat
         {
@@ -185,6 +161,33 @@ class AKCOMMONS_EXPORT AkAudioCaps: public QObject
         Q_ENUM(ChannelLayout)
         using ChannelLayoutList = QList<ChannelLayout>;
 
+    Q_PROPERTY(SampleFormat format
+               READ format
+               WRITE setFormat
+               RESET resetFormat
+               NOTIFY formatChanged)
+    Q_PROPERTY(ChannelLayout layout
+               READ layout
+               WRITE setLayout
+               RESET resetLayout
+               NOTIFY layoutChanged)
+    Q_PROPERTY(bool planar
+               READ planar
+               WRITE setPlanar
+               RESET resetPlanar
+               NOTIFY planarChanged)
+    Q_PROPERTY(int rate
+               READ rate
+               WRITE setRate
+               RESET resetRate
+               NOTIFY rateChanged)
+    Q_PROPERTY(int bps
+               READ bps
+               CONSTANT)
+    Q_PROPERTY(int channels
+               READ channels
+               CONSTANT)
+
         AkAudioCaps(QObject *parent=nullptr);
         AkAudioCaps(SampleFormat format,
                     ChannelLayout layout,
@@ -203,55 +206,55 @@ class AKCOMMONS_EXPORT AkAudioCaps: public QObject
         Q_INVOKABLE static QObject *create();
         Q_INVOKABLE static QObject *create(const AkCaps &caps);
         Q_INVOKABLE static QObject *create(const AkAudioCaps &caps);
-        Q_INVOKABLE static QObject *create(AkAudioCaps::SampleFormat format,
-                                           AkAudioCaps::ChannelLayout layout,
+        Q_INVOKABLE static QObject *create(SampleFormat format,
+                                           ChannelLayout layout,
                                            bool planar,
                                            int rate);
         Q_INVOKABLE QVariant toVariant() const;
 
-        Q_INVOKABLE AkAudioCaps::SampleFormat format() const;
-        Q_INVOKABLE AkAudioCaps::ChannelLayout layout() const;
+        Q_INVOKABLE SampleFormat format() const;
+        Q_INVOKABLE ChannelLayout layout() const;
         Q_INVOKABLE bool planar() const;
         Q_INVOKABLE int rate() const;
         Q_INVOKABLE int bps() const;
         Q_INVOKABLE int channels() const;
-        Q_INVOKABLE const QVector<AkAudioCaps::Position> positions() const;
+        Q_INVOKABLE const QVector<Position> positions() const;
 
-        Q_INVOKABLE static int bitsPerSample(AkAudioCaps::SampleFormat sampleFormat);
-        Q_INVOKABLE static QString sampleFormatToString(AkAudioCaps::SampleFormat sampleFormat);
-        Q_INVOKABLE static AkAudioCaps::SampleFormat sampleFormatFromProperties(AkAudioCaps::SampleType type,
-                                                                                int bps,
-                                                                                int endianness);
-        Q_INVOKABLE static bool sampleFormatProperties(AkAudioCaps::SampleFormat sampleFormat,
-                                                       AkAudioCaps::SampleType *type=nullptr,
+        Q_INVOKABLE static int bitsPerSample(SampleFormat sampleFormat);
+        Q_INVOKABLE static QString sampleFormatToString(SampleFormat sampleFormat);
+        Q_INVOKABLE static SampleFormat sampleFormatFromProperties(SampleType type,
+                                                                                 int bps,
+                                                                                 int endianness);
+        Q_INVOKABLE static bool sampleFormatProperties(SampleFormat sampleFormat,
+                                                       SampleType *type=nullptr,
                                                        int *bps=nullptr,
                                                        int *endianness=nullptr);
-        Q_INVOKABLE static AkAudioCaps::SampleType sampleType(AkAudioCaps::SampleFormat sampleFormat);
-        Q_INVOKABLE static QString channelLayoutToString(AkAudioCaps::ChannelLayout channelLayout);
-        Q_INVOKABLE static AkAudioCaps::ChannelLayout channelLayoutFromPositions(const QVector<AkAudioCaps::Position> &positions);
-        Q_INVOKABLE static int channelCount(AkAudioCaps::ChannelLayout channelLayout);
-        Q_INVOKABLE static int endianness(AkAudioCaps::SampleFormat sampleFormat);
-        Q_INVOKABLE static AkAudioCaps::ChannelLayout defaultChannelLayout(int channelCount);
-        Q_INVOKABLE static QVector<AkAudioCaps::Position> positions(AkAudioCaps::ChannelLayout channelLayout);
-        Q_INVOKABLE static AkAudioCaps::SpeakerPosition position(AkAudioCaps::Position position);
-        Q_INVOKABLE AkAudioCaps::SpeakerPosition position(int channel) const;
-        Q_INVOKABLE static qreal distanceFactor(AkAudioCaps::SpeakerPosition position1,
-                                                AkAudioCaps::SpeakerPosition position2);
-        Q_INVOKABLE static qreal distanceFactor(AkAudioCaps::Position position1,
-                                                AkAudioCaps::Position position2);
+        Q_INVOKABLE static SampleType sampleType(SampleFormat sampleFormat);
+        Q_INVOKABLE static QString channelLayoutToString(ChannelLayout channelLayout);
+        Q_INVOKABLE static ChannelLayout channelLayoutFromPositions(const QVector<Position> &positions);
+        Q_INVOKABLE static int channelCount(ChannelLayout channelLayout);
+        Q_INVOKABLE static int endianness(SampleFormat sampleFormat);
+        Q_INVOKABLE static ChannelLayout defaultChannelLayout(int channelCount);
+        Q_INVOKABLE static QVector<Position> positions(ChannelLayout channelLayout);
+        Q_INVOKABLE static SpeakerPosition position(Position position);
+        Q_INVOKABLE SpeakerPosition position(int channel) const;
+        Q_INVOKABLE static qreal distanceFactor(SpeakerPosition position1,
+                                                SpeakerPosition position2);
+        Q_INVOKABLE static qreal distanceFactor(Position position1,
+                                                Position position2);
 
     private:
         AkAudioCapsPrivate *d;
 
     Q_SIGNALS:
-        void formatChanged(AkAudioCaps::SampleFormat format);
-        void layoutChanged(AkAudioCaps::ChannelLayout layout);
+        void formatChanged(SampleFormat format);
+        void layoutChanged(ChannelLayout layout);
         void planarChanged(bool planar);
         void rateChanged(int rate);
 
     public Q_SLOTS:
-        void setFormat(AkAudioCaps::SampleFormat format);
-        void setLayout(AkAudioCaps::ChannelLayout layout);
+        void setFormat(SampleFormat format);
+        void setLayout(ChannelLayout layout);
         void setPlanar(bool planar);
         void setRate(int rate);
         void resetFormat();
@@ -271,12 +274,13 @@ AKCOMMONS_EXPORT QDebug operator <<(QDebug debug, AkAudioCaps::ChannelLayout lay
 AKCOMMONS_EXPORT QDataStream &operator >>(QDataStream &istream, AkAudioCaps &caps);
 AKCOMMONS_EXPORT QDataStream &operator <<(QDataStream &ostream, const AkAudioCaps &caps);
 
-Q_DECLARE_METATYPE(AkAudioCaps)
-Q_DECLARE_METATYPE(AkAudioCaps::SampleFormat)
-Q_DECLARE_METATYPE(AkAudioCaps::SampleType)
-Q_DECLARE_METATYPE(AkAudioCaps::Position)
-Q_DECLARE_METATYPE(AkAudioCaps::ChannelLayout)
-Q_DECLARE_METATYPE(AkAudioCaps::SampleFormatList)
-Q_DECLARE_METATYPE(AkAudioCaps::ChannelLayoutList)
+// Q_DECLARE_METATYPE(AkAudioCaps)
+// Q_DECLARE_METATYPE(AkAudioCaps::SampleFormat)
+// Q_DECLARE_METATYPE(AkAudioCaps::SampleType)
+// Q_DECLARE_METATYPE(AkAudioCaps::Position)
+// Q_DECLARE_METATYPE(AkAudioCaps::ChannelLayout)
+// Q_DECLARE_METATYPE(AkAudioCaps::SampleFormatList)
+// Q_DECLARE_METATYPE(AkAudioCaps::ChannelLayoutList)
 
 #endif // AKAUDIOCAPS_H
+

@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2017  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 import QtQuick
@@ -24,7 +24,7 @@ import QtCore
 import Qt.labs.settings 1.0
 import Ak
 import AkControls as AK
-import Webcamoid
+import Multicam
 
 AK.MenuOption {
     id: root
@@ -45,8 +45,8 @@ AK.MenuOption {
             id: layout
             width: scrollView.width
 
-            property int webcamoidStatus: updates.status("Webcamoid")
-            property string webcamoidLatestVersion: updates.latestVersion("Webcamoid")
+            property int multicamStatus: updates.status("multicam")
+            property string multicamLatestVersion: updates.latestVersion("multicam")
 
             Component.onCompleted: {
                 var ciIndex = 0
@@ -77,12 +77,12 @@ AK.MenuOption {
 
                 function onNewVersionAvailable(component, latestVersion)
                 {
-                    if (component == "Webcamoid") {
-                        layout.webcamoidStatus = updates.status("Webcamoid");
-                        layout.webcamoidLatestVersion = latestVersion;
-                        state = layout.webcamoidStatus == Updates.ComponentOutdated?
+                    if (component == "multicam") {
+                        layout.multicamStatus = updates.status("multicam");
+                        layout.multicamLatestVersion = latestVersion;
+                        state = layout.multicamStatus == Updates.ComponentOutdated?
                                     "isOutdated":
-                                layout.webcamoidStatus == Updates.ComponentNewer?
+                                layout.multicamStatus == Updates.ComponentNewer?
                                     "isDevelopment": ""
                     }
                 }
@@ -166,11 +166,11 @@ AK.MenuOption {
                 id: isOutdated
                 spacing: AkUnit.create(16 * AkTheme.controlScale, "dp").pixels
                 Layout.fillWidth: true
-                visible: !mediaTools.isDailyBuild && layout.webcamoidStatus == Updates.ComponentOutdated
+                visible: !mediaTools.isDailyBuild && layout.multicamStatus == Updates.ComponentOutdated
 
                 Label {
                     text: qsTr("Your version of %1 is outdated. Latest version is <b>%2</b>.")
-                            .arg(mediaTools.applicationName).arg(layout.webcamoidLatestVersion)
+                            .arg(mediaTools.applicationName).arg(layout.multicamLatestVersion)
                     wrapMode: Text.WordWrap
                     Layout.fillWidth: true
                     Layout.leftMargin: root.leftMargin
@@ -218,3 +218,4 @@ AK.MenuOption {
         }
     }
 }
+

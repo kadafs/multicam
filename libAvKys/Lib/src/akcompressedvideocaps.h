@@ -1,26 +1,29 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2022  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #ifndef AKCOMPRESSEDVIDEOCAPS_H
 #define AKCOMPRESSEDVIDEOCAPS_H
 
 #include <QObject>
+#include <QVariant>
+#include <QDebug>
+#include <QList>
 
 #include "akcommons.h"
 
@@ -32,22 +35,6 @@ class AkVideoCaps;
 class AKCOMMONS_EXPORT AkCompressedVideoCaps: public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(VideoCodecID codec
-               READ codec
-               WRITE setCodec
-               RESET resetCodec
-               NOTIFY codecChanged)
-    Q_PROPERTY(AkVideoCaps rawCaps
-               READ rawCaps
-               WRITE setRawCaps
-               RESET resetRawCaps
-               NOTIFY rawCapsChanged)
-    Q_PROPERTY(int bitrate
-               READ bitrate
-               WRITE setBitrate
-               RESET resetBitrate
-               NOTIFY bitrateChanged)
-
     public:
         enum VideoCodecID
         {
@@ -66,6 +53,22 @@ class AKCOMMONS_EXPORT AkCompressedVideoCaps: public QObject
         };
         Q_ENUM(VideoCodecID)
         using VideoCodecList = QList<VideoCodecID>;
+
+    Q_PROPERTY(VideoCodecID codec
+               READ codec
+               WRITE setCodec
+               RESET resetCodec
+               NOTIFY codecChanged)
+    Q_PROPERTY(AkVideoCaps rawCaps
+               READ rawCaps
+               WRITE setRawCaps
+               RESET resetRawCaps
+               NOTIFY rawCapsChanged)
+    Q_PROPERTY(int bitrate
+               READ bitrate
+               WRITE setBitrate
+               RESET resetBitrate
+               NOTIFY bitrateChanged)
 
         AkCompressedVideoCaps(QObject *parent=nullptr);
         AkCompressedVideoCaps(VideoCodecID codec,
@@ -97,7 +100,7 @@ class AKCOMMONS_EXPORT AkCompressedVideoCaps: public QObject
         Q_INVOKABLE AkVideoCaps rawCaps() const;
         Q_INVOKABLE int bitrate() const;
 
-        Q_INVOKABLE static QString videoCodecIDToString(AkCompressedVideoCaps::VideoCodecID codecID);
+        Q_INVOKABLE static QString videoCodecIDToString(VideoCodecID codecID);
 
     private:
         AkCompressedVideoCapsPrivate *d;
@@ -116,7 +119,7 @@ class AKCOMMONS_EXPORT AkCompressedVideoCaps: public QObject
         void resetBitrate();
         static void registerTypes();
 
-        friend bool operator <(const AkCompressedVideoCaps &caps1, const AkCompressedVideoCaps &caps2);
+        friend AKCOMMONS_EXPORT bool operator <(const AkCompressedVideoCaps &caps1, const AkCompressedVideoCaps &caps2);
 };
 
 AKCOMMONS_EXPORT QDebug operator <<(QDebug debug, const AkCompressedVideoCaps &caps);
@@ -125,8 +128,9 @@ AKCOMMONS_EXPORT QDataStream &operator >>(QDataStream &istream, AkCompressedVide
 AKCOMMONS_EXPORT QDataStream &operator <<(QDataStream &ostream, const AkCompressedVideoCaps &caps);
 AKCOMMONS_EXPORT bool operator <(const AkCompressedVideoCaps &caps1, const AkCompressedVideoCaps &caps2);
 
-Q_DECLARE_METATYPE(AkCompressedVideoCaps)
-Q_DECLARE_METATYPE(AkCompressedVideoCaps::VideoCodecID)
-Q_DECLARE_METATYPE(AkCompressedVideoCaps::VideoCodecList)
+// Q_DECLARE_METATYPE(AkCompressedVideoCaps)
+// Q_DECLARE_METATYPE(AkCompressedVideoCaps::VideoCodecID)
+// Q_DECLARE_METATYPE(AkCompressedVideoCaps::VideoCodecList)
 
 #endif // AKCOMPRESSEDVIDEOCAPS_H
+

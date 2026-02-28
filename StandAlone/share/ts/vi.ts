@@ -655,8 +655,8 @@
     </message>
     <message>
         <location filename="../qml/Contributors.qml" line="49"/>
-        <source>Thanks to all these cool people that helped contributing to Webcamoid all these years.</source>
-        <translation>Cảm ơn tất cả những người tuyệt vời đã giúp đóng góp cho Webcamoid trong suốt những năm qua.</translation>
+        <source>Thanks to all these cool people that helped contributing to Multicam all these years.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -863,7 +863,47 @@
         <translation>Chất lượng</translation>
     </message>
     <message>
-        <location filename="../qml/ImageCapture.qml" line="144"/>
+        <location filename="../qml/ImageCapture.qml" line="142"/>
+        <source>Flash settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="152"/>
+        <source>Use flash</source>
+        <translation type="unfinished">Sử dụng đèn flash</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="155"/>
+        <source>Use flash when taking a photo</source>
+        <translation type="unfinished">Sử dụng đèn flash khi chụp ảnh</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="164"/>
+        <source>Delay</source>
+        <translation type="unfinished">Độ trễ</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="167"/>
+        <source>Photo timer</source>
+        <translation type="unfinished">Bộ hẹn giờ chụp ảnh</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="168"/>
+        <source>The time to wait before the photo is taken</source>
+        <translation type="unfinished">Thời gian chờ trước khi chụp ảnh</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="176"/>
+        <source>Now</source>
+        <translation type="unfinished">Ngay bây giờ</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="219"/>
+        <source>%1 seconds</source>
+        <translation type="unfinished">%1 giây</translation>
+    </message>
+    <message>
+        <location filename="../qml/ImageCapture.qml" line="247"/>
         <source>Select the folder to save your photos</source>
         <translation>Chọn thư mục để lưu ảnh của bạn</translation>
     </message>
@@ -891,18 +931,13 @@
     </message>
     <message>
         <location filename="../qml/LocalSettingsMenu.qml" line="43"/>
-        <source>Video capture settings</source>
-        <translation>Cài đặt quay video</translation>
+        <source>Recording settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/LocalSettingsMenu.qml" line="44"/>
-        <source>Image capture settings</source>
-        <translation>Cài đặt chụp ảnh</translation>
-    </message>
-    <message>
-        <location filename="../qml/LocalSettingsMenu.qml" line="51"/>
-        <source>Video recording settings</source>
-        <translation>Cài đặt ghi video</translation>
+        <source>Capture settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1136,7 +1171,7 @@
     <message>
         <location filename="../../src/clioptions.cpp" line="68"/>
         <source>Semi-colon separated list of paths to avoid loading.</source>
-        <extracomment>Blacklist of plugins that could have conflicts when loading in Webcamoid.</extracomment>
+        <extracomment>Blacklist of plugins that could have conflicts when loading in Multicam.</extracomment>
         <translation>Danh sách đường dẫn phân cách bằng dấu chấm phẩy để tránh tải.</translation>
     </message>
     <message>
@@ -1689,7 +1724,7 @@
         <translation>Tối ưu hóa</translation>
     </message>
     <message>
-        <location filename="../../src/recording.cpp" line="1444"/>
+        <location filename="../../src/recording.cpp" line="1510"/>
         <source>%1/Video %2.%3</source>
         <translation>%1/Video %2.%3</translation>
     </message>
@@ -1773,7 +1808,7 @@
     <message>
         <location filename="../qml/ThirdPartyLicenses.qml" line="31"/>
         <source>3rd Party Licenses</source>
-        <extracomment>License for 3rd party components used in Webcamoid, like</extracomment>
+        <extracomment>License for 3rd party components used in Multicam, like</extracomment>
         <translation>Giấy phép Bên thứ 3</translation>
     </message>
     <message>
@@ -1900,8 +1935,8 @@
     </message>
     <message>
         <location filename="../qml/VCamInstallSucceededDialog.qml" line="40"/>
-        <source>Restart Webcamoid?</source>
-        <translation>Khởi động lại Webcamoid?</translation>
+        <source>Restart Multicam?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2403,72 +2438,82 @@
         <translation>Ghi âm thanh</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="101"/>
+        <location filename="../qml/VideoRecording.qml" line="95"/>
+        <source>Use flash</source>
+        <translation type="unfinished">Sử dụng đèn flash</translation>
+    </message>
+    <message>
+        <location filename="../qml/VideoRecording.qml" line="98"/>
+        <source>Use flash when recording a video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/VideoRecording.qml" line="113"/>
         <source>Video quality</source>
         <translation>Chất lượng video</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="110"/>
+        <location filename="../qml/VideoRecording.qml" line="122"/>
         <source>Output width</source>
         <translation>Chiều rộng đầu ra</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="130"/>
+        <location filename="../qml/VideoRecording.qml" line="142"/>
         <source>Output height</source>
         <translation>Chiều cao đầu ra</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="150"/>
+        <location filename="../qml/VideoRecording.qml" line="162"/>
         <source>Output Frame rate</source>
         <translation>Tốc độ khung hình đầu ra</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="169"/>
+        <location filename="../qml/VideoRecording.qml" line="181"/>
         <source>Audio quality</source>
         <translation>Chất lượng âm thanh</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="178"/>
+        <location filename="../qml/VideoRecording.qml" line="190"/>
         <source>Sample rate</source>
         <translation>Tần số mẫu</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="198"/>
+        <location filename="../qml/VideoRecording.qml" line="210"/>
         <source>File format and codecs</source>
         <translation>Định dạng tệp và bộ mã hóa</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="208"/>
+        <location filename="../qml/VideoRecording.qml" line="220"/>
         <source>Configure the file format</source>
         <translation>Cấu hình định dạng tệp</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="210"/>
+        <location filename="../qml/VideoRecording.qml" line="222"/>
         <source>Configure the file format for recording</source>
         <translation>Cấu hình định dạng tệp để ghi</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="218"/>
+        <location filename="../qml/VideoRecording.qml" line="230"/>
         <source>Configure the video codec</source>
         <translation>Cấu hình bộ mã hóa video</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="220"/>
+        <location filename="../qml/VideoRecording.qml" line="232"/>
         <source>Configure the video codec for recording</source>
         <translation>Cấu hình bộ mã hóa video để ghi</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="228"/>
+        <location filename="../qml/VideoRecording.qml" line="240"/>
         <source>Configure the audio codec</source>
         <translation>Cấu hình bộ mã hóa âm thanh</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="231"/>
+        <location filename="../qml/VideoRecording.qml" line="243"/>
         <source>Configure the audio codec for recording</source>
         <translation>Cấu hình bộ mã hóa âm thanh để ghi</translation>
     </message>
     <message>
-        <location filename="../qml/VideoRecording.qml" line="264"/>
+        <location filename="../qml/VideoRecording.qml" line="276"/>
         <source>Select the folder to save your videos</source>
         <translation>Chọn thư mục để lưu video của bạn</translation>
     </message>

@@ -1,20 +1,20 @@
-# Webcamoid, camera capture application.
+# Multicam, camera capture application.
 # Copyright (C) 2021  Gonzalo Exequiel Pedone
 #
-# Webcamoid is free software: you can redistribute it and/or modify
+# Multicam is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# Webcamoid is distributed in the hope that it will be useful,
+# Multicam is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+# along with Multicam. If not, see <http://www.gnu.org/licenses/>.
 #
-# Web-Site: http://webcamoid.github.io/
+# Web-Site: http://Multicam.github.io/
 
 cmake_minimum_required(VERSION 3.16)
 
@@ -22,7 +22,7 @@ project(VideoCapture_androidcamerajar)
 
 include(../../../../../../cmake/ProjectCommons.cmake)
 
-set(SOURCES_PREFIX src/org/webcamoid/plugins/VideoCapture/submodules/androidcamera)
+set(SOURCES_PREFIX src/org/Multicam/plugins/VideoCapture/submodules/androidcamera)
 set(SOURCES ${SOURCES_PREFIX}/AkAndroidCameraCallbacks.java)
 
 if (ANDROID)
@@ -42,3 +42,4 @@ if (ANDROID)
 endif ()
 
 add_custom_target(VideoCapture_androidcamerajar_sources SOURCES ${SOURCES})
+

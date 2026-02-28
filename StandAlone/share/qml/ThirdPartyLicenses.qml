@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2015  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 import QtQuick
@@ -26,7 +26,7 @@ import AkControls as AK
 AK.MenuOption {
     id: root
 
-    //: License for 3rd party components used in Webcamoid, like
+    //: License for 3rd party components used in Multicam, like
     //  libraries and code snippets.
     title: qsTr("3rd Party Licenses")
     subtitle: qsTr("Licenses for the code incorporated into %1").arg(mediaTools.applicationName)
@@ -47,7 +47,7 @@ AK.MenuOption {
             width: scrollView.width
 
             Label {
-                text: "The followings are the Licenses for 3rd-party work incorporated into Webcamoid. <b>These Licenses DOES NOT applies to Webcamoid itself.</b>"
+                text: "The followings are the Licenses for 3rd-party work incorporated into Multicam. <b>These Licenses DOES NOT applies to Multicam itself.</b>"
                 wrapMode: Text.WordWrap
                 Layout.leftMargin: root.leftMargin
                 Layout.rightMargin: root.rightMargin
@@ -63,7 +63,7 @@ AK.MenuOption {
                 Layout.fillWidth: true
             }
             TextArea {
-                text: mediaTools.readFile(":/Webcamoid/share/3rd-party/licenses/openclipart.txt")
+                text: mediaTools.readFile(":/multicam/share/3rd-party/licenses/openclipart.txt")
                 wrapMode: Text.WordWrap
                 readOnly: true
                 horizontalAlignment: Text.AlignLeft
@@ -78,7 +78,7 @@ AK.MenuOption {
                 Layout.fillWidth: true
             }
             TextArea {
-                text: mediaTools.readFile(":/Webcamoid/share/3rd-party/licenses/OpenCV.txt")
+                text: mediaTools.readFile(":/multicam/share/3rd-party/licenses/OpenCV.txt")
                 wrapMode: Text.WordWrap
                 readOnly: true
                 horizontalAlignment: Text.AlignLeft
@@ -93,7 +93,7 @@ AK.MenuOption {
                 Layout.fillWidth: true
             }
             TextArea {
-                text: mediaTools.readFile(":/Webcamoid/share/3rd-party/licenses/TemperatureAlgorithm.txt")
+                text: mediaTools.readFile(":/multicam/share/3rd-party/licenses/TemperatureAlgorithm.txt")
                 wrapMode: Text.WordWrap
                 readOnly: true
                 horizontalAlignment: Text.AlignLeft
@@ -108,7 +108,7 @@ AK.MenuOption {
                 Layout.fillWidth: true
             }
             TextArea {
-                text: mediaTools.readFile(":/Webcamoid/share/3rd-party/licenses/UsbIds.txt")
+                text: mediaTools.readFile(":/multicam/share/3rd-party/licenses/UsbIds.txt")
                 wrapMode: Text.WordWrap
                 readOnly: true
                 horizontalAlignment: Text.AlignLeft
@@ -117,3 +117,4 @@ AK.MenuOption {
         }
     }
 }
+

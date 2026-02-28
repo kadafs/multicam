@@ -1,26 +1,29 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2016  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #ifndef AKVIDEOCAPS_H
 #define AKVIDEOCAPS_H
 
 #include <QObject>
+#include <QList>
+#include <QDebug>
+#include <QVariant>
 
 #include "akcommons.h"
 
@@ -35,35 +38,6 @@ using AkVideoCapsList = QList<AkVideoCaps>;
 class AKCOMMONS_EXPORT AkVideoCaps: public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(PixelFormat format
-               READ format
-               WRITE setFormat
-               RESET resetFormat
-               NOTIFY formatChanged)
-    Q_PROPERTY(int bpp
-               READ bpp
-               CONSTANT)
-    Q_PROPERTY(QSize size
-               READ size
-               WRITE setSize
-               RESET resetSize
-               NOTIFY sizeChanged)
-    Q_PROPERTY(int width
-               READ width
-               WRITE setWidth
-               RESET resetWidth
-               NOTIFY widthChanged)
-    Q_PROPERTY(int height
-               READ height
-               WRITE setHeight
-               RESET resetHeight
-               NOTIFY heightChanged)
-    Q_PROPERTY(AkFrac fps
-               READ fps
-               WRITE setFps
-               RESET resetFps
-               NOTIFY fpsChanged)
-
     public:
         enum PixelFormat
         {
@@ -596,6 +570,35 @@ class AKCOMMONS_EXPORT AkVideoCaps: public QObject
         Q_ENUM(PixelFormat)
         using PixelFormatList = QList<PixelFormat>;
 
+    Q_PROPERTY(PixelFormat format
+               READ format
+               WRITE setFormat
+               RESET resetFormat
+               NOTIFY formatChanged)
+    Q_PROPERTY(int bpp
+               READ bpp
+               CONSTANT)
+    Q_PROPERTY(QSize size
+               READ size
+               WRITE setSize
+               RESET resetSize
+               NOTIFY sizeChanged)
+    Q_PROPERTY(int width
+               READ width
+               WRITE setWidth
+               RESET resetWidth
+               NOTIFY widthChanged)
+    Q_PROPERTY(int height
+               READ height
+               WRITE setHeight
+               RESET resetHeight
+               NOTIFY heightChanged)
+    Q_PROPERTY(AkFrac fps
+               READ fps
+               WRITE setFps
+               RESET resetFps
+               NOTIFY fpsChanged)
+
         AkVideoCaps(QObject *parent=nullptr);
         AkVideoCaps(PixelFormat format,
                     int width,
@@ -617,16 +620,16 @@ class AKCOMMONS_EXPORT AkVideoCaps: public QObject
         Q_INVOKABLE static QObject *create();
         Q_INVOKABLE static QObject *create(const AkCaps &caps);
         Q_INVOKABLE static QObject *create(const AkVideoCaps &caps);
-        Q_INVOKABLE static QObject *create(AkVideoCaps::PixelFormat format,
+        Q_INVOKABLE static QObject *create(PixelFormat format,
                                            int width,
                                            int height,
                                            const AkFrac &fps);
-        Q_INVOKABLE static QObject *create(AkVideoCaps::PixelFormat format,
+        Q_INVOKABLE static QObject *create(PixelFormat format,
                                            const QSize &size,
                                            const AkFrac &fps);
         Q_INVOKABLE QVariant toVariant() const;
 
-        Q_INVOKABLE AkVideoCaps::PixelFormat format() const;
+        Q_INVOKABLE PixelFormat format() const;
         Q_INVOKABLE QSize size() const;
         Q_INVOKABLE int width() const;
         Q_INVOKABLE int height() const;
@@ -637,22 +640,22 @@ class AKCOMMONS_EXPORT AkVideoCaps: public QObject
         Q_INVOKABLE bool isSameFormat(const AkVideoCaps &other) const;
         Q_INVOKABLE size_t dataSize() const;
 
-        Q_INVOKABLE static int bitsPerPixel(AkVideoCaps::PixelFormat pixelFormat);
-        Q_INVOKABLE static QString pixelFormatToString(AkVideoCaps::PixelFormat pixelFormat);
-        Q_INVOKABLE static AkVideoFormatSpec formatSpecs(AkVideoCaps::PixelFormat pixelFormat);
+        Q_INVOKABLE static int bitsPerPixel(PixelFormat pixelFormat);
+        Q_INVOKABLE static QString pixelFormatToString(PixelFormat pixelFormat);
+        Q_INVOKABLE static AkVideoFormatSpec formatSpecs(PixelFormat pixelFormat);
 
     private:
         AkVideoCapsPrivate *d;
 
     Q_SIGNALS:
-        void formatChanged(AkVideoCaps::PixelFormat format);
+        void formatChanged(PixelFormat format);
         void sizeChanged(const QSize &size);
         void widthChanged(int width);
         void heightChanged(int height);
         void fpsChanged(const AkFrac &fps);
 
     public Q_SLOTS:
-        void setFormat(AkVideoCaps::PixelFormat format);
+        void setFormat(PixelFormat format);
         void setSize(const QSize &size);
         void setWidth(int width);
         void setHeight(int height);
@@ -664,7 +667,7 @@ class AKCOMMONS_EXPORT AkVideoCaps: public QObject
         void resetFps();
         static void registerTypes();
 
-    friend bool operator <(const AkVideoCaps &caps1, const AkVideoCaps &caps2);
+    friend AKCOMMONS_EXPORT bool operator <(const AkVideoCaps &caps1, const AkVideoCaps &caps2);
 };
 
 AKCOMMONS_EXPORT QDebug operator <<(QDebug debug, const AkVideoCaps &caps);
@@ -673,9 +676,10 @@ AKCOMMONS_EXPORT QDataStream &operator >>(QDataStream &istream, AkVideoCaps &cap
 AKCOMMONS_EXPORT QDataStream &operator <<(QDataStream &ostream, const AkVideoCaps &caps);
 AKCOMMONS_EXPORT bool operator <(const AkVideoCaps &caps1, const AkVideoCaps &caps2);
 
-Q_DECLARE_METATYPE(AkVideoCaps)
-Q_DECLARE_METATYPE(AkVideoCapsList)
-Q_DECLARE_METATYPE(AkVideoCaps::PixelFormat)
-Q_DECLARE_METATYPE(AkVideoCaps::PixelFormatList)
+// Q_DECLARE_METATYPE(AkVideoCaps)
+// Q_DECLARE_METATYPE(AkVideoCapsList)
+// Q_DECLARE_METATYPE(AkVideoCaps::PixelFormat)
+// Q_DECLARE_METATYPE(AkVideoCaps::PixelFormatList)
 
 #endif // AKVIDEOCAPS_H
+

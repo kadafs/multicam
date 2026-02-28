@@ -1,2 +1,3 @@
-This folder contains licences for 3rd-party work incorporated into Webcamoid.
-These licences DOES NOT applies to Webcamoid itself.
+This folder contains licences for 3rd-party work incorporated into Multicam.
+These licences DOES NOT applies to Multicam itself.
+

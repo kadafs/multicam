@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2017  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 import QtQuick
@@ -45,14 +45,14 @@ ApplicationWindow {
                 height: width
                 sourceSize.width: width
                 sourceSize.height: height
-                source: "../../../../../../StandAlone/share/themes/WebcamoidTheme/icons/hicolor/128x128/webcamoid.png"
+                source: "../../../../../../StandAlone/share/themes/MulticamTheme/icons/hicolor/128x128/multicam.png"
             }
 
             ColumnLayout {
                 Text {
                     id: programName
                     color: "#ffffff"
-                    text: "Webcamoid"
+                    text: "multicam"
                     font.weight: Font.Bold
                     font.pixelSize: 40
                 }
@@ -180,8 +180,8 @@ ApplicationWindow {
             Text {
                 id: usage
                 color: "#ffffff"
-                text: "This is a Webcamoid's virtual camera device.\n"
-                    + "Go to Webcamoid, enable virtual camera output, select "
+                text: "This is a multicam's virtual camera device.\n"
+                    + "Go to multicam, enable virtual camera output, select "
                     + "this device and play some webcam, desktop or video."
                 wrapMode: Text.WordWrap
                 anchors.fill: parent
@@ -192,3 +192,4 @@ ApplicationWindow {
         }
     }
 }
+

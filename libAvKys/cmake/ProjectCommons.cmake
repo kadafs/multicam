@@ -1,20 +1,20 @@
-# Webcamoid, camera capture application.
+# Multicam, camera capture application.
 # Copyright (C) 2021  Gonzalo Exequiel Pedone
 #
-# Webcamoid is free software: you can redistribute it and/or modify
+# Multicam is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# Webcamoid is distributed in the hope that it will be useful,
+# Multicam is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+# along with Multicam. If not, see <http://www.gnu.org/licenses/>.
 #
-# Web-Site: http://webcamoid.github.io/
+# Web-Site: http://Multicam.github.io/
 
 set(QT_VERSION_MAJOR 6 CACHE STRING "Qt version to compile with")
 set(QT_MINIMUM_VERSION 6.2 CACHE INTERNAL "")
@@ -34,10 +34,10 @@ set(VER_PAT 1)
 set(VERSION ${VER_MAJ}.${VER_MIN}.${VER_PAT})
 
 set(DAILY_BUILD OFF CACHE BOOL "Mark this as a daily build")
-set(STATIC_BUILD OFF CACHE BOOL "Build Webcamoid statically")
+set(STATIC_BUILD OFF CACHE BOOL "Build Multicam statically")
 set(STATIC_LIBGCC OFF CACHE BOOL "Build with static GCC libraries")
-set(ORGANIZATION_IDENTIFIER "io.github.webcamoid" CACHE STRING "Organization identifier")
-set(APP_IDENTIFIER "${ORGANIZATION_IDENTIFIER}.Webcamoid" CACHE STRING "Application identifier")
+set(ORGANIZATION_IDENTIFIER "io.github.multicam" CACHE STRING "Organization identifier")
+set(APP_IDENTIFIER "${ORGANIZATION_IDENTIFIER}.multicam" CACHE STRING "Application identifier")
 set(WITH_FLATPAK_VCAM ON CACHE BOOL "Enable support for the virtual camera in Flatpak")
 set(ANDROID_OPENSSL_SUFFIX "_3" CACHE STRING "Set OpenSSL libraries suffix")
 set(ENABLE_ANDROID_DEBUGGING OFF CACHE BOOL "Enable debugging logs in Android")
@@ -129,10 +129,10 @@ set(ANDROIDX_ANNOTATION_VERSION "1.9.1" CACHE STRING "androidx.annotation:annota
 set(GOOGLE_PLAY_SERVICES_ADS_VERSION "24.0.0" CACHE STRING "com.google.android.gms:play-services-ads-lite version")
 
 
-# Allow to build Webcamoid in Linux and other POSIX systems as if you were
+# Allow to build Multicam in Linux and other POSIX systems as if you were
 # building it for APPLE
 # NOTE: No, this option isn't for cross compile, the resulting binaries are not
-# compatible with Mac, this option allows to test certain portions of Webcamoid
+# compatible with Mac, this option allows to test certain portions of Multicam
 # as if you were in a Mac.
 set(FAKE_APPLE OFF CACHE BOOL "Build the virtual camera plugin for MacOs in Linux and other POSIX systems as if you were building it for APPLE")
 
@@ -142,7 +142,7 @@ endif ()
 
 if (APPLE OR FAKE_APPLE)
     set(BUILDDIR build)
-    set(EXECPREFIX Webcamoid.app/Contents)
+    set(EXECPREFIX Multicam.app/Contents)
     set(BINDIR ${EXECPREFIX}/MacOS)
     set(LIBDIR ${EXECPREFIX}/Frameworks)
     set(PLUGINSDIR ${EXECPREFIX}/Plugins)
@@ -180,8 +180,8 @@ else ()
     set(QMLDIR ${CMAKE_INSTALL_LIBDIR}/qt/qml
         CACHE FILEPATH "Qml install directory")
     set(DATAROOTDIR ${CMAKE_INSTALL_DATAROOTDIR})
-    set(LICENSEDIR ${DATAROOTDIR}/licenses/webcamoid)
-    set(TRANSLATIONSDIR ${DATAROOTDIR}/webcamoid/translations)
+    set(LICENSEDIR ${DATAROOTDIR}/licenses/Multicam)
+    set(TRANSLATIONSDIR ${DATAROOTDIR}/Multicam/translations)
     set(OUTPUT_VLC_PLUGINS_DIR ${LIBDIR}/vlc/plugins)
     set(OUTPUT_GST_PLUGINS_DIR ${LIBDIR}/gstreamer-1.0)
     set(OUTPUT_PIPEWIRE_MODULES_DIR ${LIBDIR}/pipewire)
@@ -351,7 +351,7 @@ set(QML_IMPORT_PATH "${CMAKE_SOURCE_DIR}/libAvKys/Lib/share/qml" CACHE STRING "a
 # NOTE for other developers: TARGET_ARCH is intended to be used as a reference
 # for the deploy tool, so don't rush on adding new architectures unless you
 # want to create a binary distributable for that architecture.
-# Webcamoid build is not affected in anyway by the value of TARGET_ARCH, if the
+# Multicam build is not affected in anyway by the value of TARGET_ARCH, if the
 # build fails its something else and totally unrelated to that variable.
 
 if (WIN32)
@@ -405,9 +405,9 @@ if (WIN32)
     }" IS_WIN32_ARM_TARGET)
 
     if (IS_WIN64_TARGET OR IS_WIN64_ARM_TARGET)
-        set(QTIFW_TARGET_DIR "\@ApplicationsDirX64\@/Webcamoid")
+        set(QTIFW_TARGET_DIR "\@ApplicationsDirX64\@/Multicam")
     else ()
-        set(QTIFW_TARGET_DIR "\@ApplicationsDirX86\@/Webcamoid")
+        set(QTIFW_TARGET_DIR "\@ApplicationsDirX86\@/Multicam")
     endif()
 
     if (IS_WIN64_TARGET)
@@ -710,3 +710,4 @@ if (QT_QMAKE_EXECUTABLE_BIN)
 endif ()
 
 set(QT_INSTALL_SRC "${QT_INSTALL_PREFIX}/src" CACHE PATH "Qt sources templates directory")
+

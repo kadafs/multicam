@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2016  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #include <QDir>
@@ -745,9 +745,9 @@ bool VideoLayer::canEditVCamDescription() const
 QString VideoLayer::vcamUpdateUrl() const
 {
 #if defined(Q_OS_WIN32) || defined(Q_OS_MACOS) || defined(FAKE_APPLE)
-    return {"https://api.github.com/repos/webcamoid/akvirtualcamera/releases/latest"};
+    return {"https://api.github.com/repos/Multicam/akvirtualcamera/releases/latest"};
 #elif defined(Q_OS_LINUX)
-    return {"https://api.github.com/repos/webcamoid/akvcam/releases/latest"};
+    return {"https://api.github.com/repos/Multicam/akvcam/releases/latest"};
 #else
     return {};
 #endif
@@ -756,9 +756,9 @@ QString VideoLayer::vcamUpdateUrl() const
 QString VideoLayer::vcamDownloadUrl() const
 {
 #if defined(Q_OS_WIN32) || defined(Q_OS_MACOS) || defined(FAKE_APPLE)
-    return {"https://github.com/webcamoid/akvirtualcamera/releases/latest"};
+    return {"https://github.com/Multicam/akvirtualcamera/releases/latest"};
 #elif defined(Q_OS_LINUX)
-    return {"https://github.com/webcamoid/akvcam/releases/latest"};
+    return {"https://github.com/Multicam/akvcam/releases/latest"};
 #else
     return {};
 #endif
@@ -1230,7 +1230,7 @@ void VideoLayer::setQmlEngine(QQmlApplicationEngine *engine)
         qRegisterMetaType<VCamStatus>("VCamStatus");
         qRegisterMetaType<TorchMode>("TorchMode");
         qRegisterMetaType<PermissionStatus>("PermissionStatus");
-        qmlRegisterType<VideoLayer>("Webcamoid", 1, 0, "VideoLayer");
+        qmlRegisterType<VideoLayer>("Multicam", 1, 0, "VideoLayer");
     }
 }
 
@@ -1876,18 +1876,18 @@ QString VideoLayerPrivate::vcamDownloadUrl() const
         return {};
 
 #if defined(Q_OS_WIN32)
-    return QString("https://github.com/webcamoid/akvirtualcamera/releases/download/%1/akvirtualcamera-windows-%1.exe")
+    return QString("https://github.com/Multicam/akvirtualcamera/releases/download/%1/akvirtualcamera-windows-%1.exe")
            .arg(this->m_latestVersion);
 #elif defined(Q_OS_MACOS)
-    return QString("https://github.com/webcamoid/akvirtualcamera/releases/download/%1/akvirtualcamera-mac-%1-%2.pkg")
+    return QString("https://github.com/Multicam/akvirtualcamera/releases/download/%1/akvirtualcamera-mac-%1-%2.pkg")
            .arg(this->m_latestVersion)
            .arg(TARGET_ARCH);
 #elif defined(Q_OS_LINUX)
     #ifdef Q_PROCESSOR_X86
-        return QString("https://github.com/webcamoid/akvcam/releases/download/%1/akvcam-installer-gui-linux-%1.run")
+        return QString("https://github.com/Multicam/akvcam/releases/download/%1/akvcam-installer-gui-linux-%1.run")
                .arg(this->m_latestVersion);
     #else
-        return QString("https://github.com/webcamoid/akvcam/releases/download/%1/akvcam-installer-cli-linux-%1.run")
+        return QString("https://github.com/Multicam/akvcam/releases/download/%1/akvcam-installer-cli-linux-%1.run")
                .arg(this->m_latestVersion);
     #endif
 #else
@@ -1896,3 +1896,4 @@ QString VideoLayerPrivate::vcamDownloadUrl() const
 }
 
 #include "moc_videolayer.cpp"
+

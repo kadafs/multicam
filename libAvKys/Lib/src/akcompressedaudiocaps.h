@@ -1,26 +1,29 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2024  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #ifndef AKCOMPRESSEDAUDIOCAPS_H
 #define AKCOMPRESSEDAUDIOCAPS_H
 
 #include <QObject>
+#include <QVariant>
+#include <QDebug>
+#include <QList>
 
 #include "akcommons.h"
 
@@ -64,6 +67,23 @@ class AKCOMMONS_EXPORT AkCompressedAudioCaps: public QObject
             AudioCodecID_vorbis  = AK_MAKE_FOURCC('V', 'O', 'R', 'B'),
         };
         Q_ENUM(AudioCodecID)
+        using AudioCodecList = QList<AudioCodecID>;
+
+    Q_PROPERTY(AudioCodecID codec
+               READ codec
+               WRITE setCodec
+               RESET resetCodec
+               NOTIFY codecChanged)
+    Q_PROPERTY(AkAudioCaps rawCaps
+               READ rawCaps
+               WRITE setRawCaps
+               RESET resetRawCaps
+               NOTIFY rawCapsChanged)
+    Q_PROPERTY(int bitrate
+               READ bitrate
+               WRITE setBitrate
+               RESET resetBitrate
+               NOTIFY bitrateChanged)
 
         AkCompressedAudioCaps(QObject *parent=nullptr);
         AkCompressedAudioCaps(AudioCodecID codec,
@@ -95,7 +115,7 @@ class AKCOMMONS_EXPORT AkCompressedAudioCaps: public QObject
         Q_INVOKABLE AkAudioCaps rawCaps() const;
         Q_INVOKABLE int bitrate() const;
 
-        Q_INVOKABLE static QString audioCodecIDToString(AkCompressedAudioCaps::AudioCodecID codecID);
+        Q_INVOKABLE static QString audioCodecIDToString(AudioCodecID codecID);
 
     private:
         AkCompressedAudioCapsPrivate *d;
@@ -120,7 +140,8 @@ AKCOMMONS_EXPORT QDebug operator <<(QDebug debug, AkCompressedAudioCaps::AudioCo
 AKCOMMONS_EXPORT QDataStream &operator >>(QDataStream &istream, AkCompressedAudioCaps &caps);
 AKCOMMONS_EXPORT QDataStream &operator <<(QDataStream &ostream, const AkCompressedAudioCaps &caps);
 
-Q_DECLARE_METATYPE(AkCompressedAudioCaps)
-Q_DECLARE_METATYPE(AkCompressedAudioCaps::AudioCodecID)
+// Q_DECLARE_METATYPE(AkCompressedAudioCaps)
+// Q_DECLARE_METATYPE(AkCompressedAudioCaps::AudioCodecID)
 
 #endif // AKCOMPRESSEDAUDIOCAPS_H
+

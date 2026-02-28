@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2015  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 import QtQuick
@@ -46,7 +46,7 @@ AK.MenuOption {
             width: scrollView.width
 
             Label {
-                text: qsTr("Thanks to all these cool people that helped contributing to Webcamoid all these years.")
+                text: qsTr("Thanks to all these cool people that helped contributing to Multicam all these years.")
                 wrapMode: Text.WordWrap
                 Layout.leftMargin: root.leftMargin
                 Layout.rightMargin: root.rightMargin
@@ -54,7 +54,7 @@ AK.MenuOption {
             }
             TextArea {
                 id: contributorsText
-                text: mediaTools.readFile(":/Webcamoid/share/contributors.txt")
+                text: mediaTools.readFile(":/multicam/share/contributors.txt")
                 wrapMode: Text.WordWrap
                 readOnly: true
                 horizontalAlignment: Text.AlignLeft
@@ -63,3 +63,4 @@ AK.MenuOption {
         }
     }
 }
+

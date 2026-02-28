@@ -1,24 +1,24 @@
-# Webcamoid, camera capture application.
+# Multicam, camera capture application.
 # Copyright (C) 2021  Gonzalo Exequiel Pedone
 #
-# Webcamoid is free software: you can redistribute it and/or modify
+# Multicam is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# Webcamoid is distributed in the hope that it will be useful,
+# Multicam is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+# along with Multicam. If not, see <http://www.gnu.org/licenses/>.
 #
-# Web-Site: http://webcamoid.github.io/
+# Web-Site: http://Multicam.github.io/
 
 cmake_minimum_required(VERSION 3.16)
 
-project(Webcamoid)
+project(multicam)
 
 include(libAvKys/cmake/ProjectCommons.cmake)
 
@@ -34,7 +34,7 @@ add_subdirectory(StandAlone)
 if (ANDROID)
     set(TARGET_PLATFORM android)
     set(BUILD_INFO_FILE ${DATAROOTDIR}/build-info.txt)
-    set(MAIN_EXECUTABLE ${BINDIR}/libWebcamoid_${CMAKE_ANDROID_ARCH_ABI}.so)
+    set(MAIN_EXECUTABLE ${BINDIR}/libMulticam_${CMAKE_ANDROID_ARCH_ABI}.so)
     set(APP_LIBDIR ${LIBDIR})
     set(OUTPUT_FORMATS "AndroidAPK")
     set(OUTPUT_QML_DIR ${DATAROOTDIR}/android_rcc_bundle/qml)
@@ -42,11 +42,11 @@ if (ANDROID)
 elseif (APPLE OR FAKE_APPLE)
     set(TARGET_PLATFORM mac)
     set(BUILD_INFO_FILE ${DATAROOTDIR}/build-info.txt)
-    set(MAIN_EXECUTABLE ${BINDIR}/Webcamoid)
+    set(MAIN_EXECUTABLE ${BINDIR}/Multicam)
     set(APP_LIBDIR ${LIBDIR})
-    set(QTIFW_TARGET_DIR "\@ApplicationsDir\@/Webcamoid")
+    set(QTIFW_TARGET_DIR "\@ApplicationsDir\@/Multicam")
     set(OUTPUT_FORMATS "MacPkg")
-    set(INSTALLER_ICON "StandAlone/share/themes/WebcamoidTheme/icons/webcamoid.icns")
+    set(INSTALLER_ICON "StandAlone/share/themes/MulticamTheme/icons/Multicam.icns")
     set(RUN_PROGRAM "\@TargetDir\@/${MAIN_EXECUTABLE}")
     set(OUTPUT_QML_DIR ${DATAROOTDIR}/qml)
     set(OUTPUT_QT_PLUGINS_DIR ${EXECPREFIX}/Plugins)
@@ -54,10 +54,10 @@ elseif (APPLE OR FAKE_APPLE)
 elseif (WIN32)
     set(TARGET_PLATFORM windows)
     set(BUILD_INFO_FILE ${DATAROOTDIR}/build-info.txt)
-    set(MAIN_EXECUTABLE ${BINDIR}/webcamoid.exe)
+    set(MAIN_EXECUTABLE ${BINDIR}/multicam.exe)
     set(APP_LIBDIR ${LIBDIR})
     set(OUTPUT_FORMATS "CompressedZip, Nsis")
-    set(INSTALLER_ICON "StandAlone/share/themes/WebcamoidTheme/icons/hicolor/256x256/webcamoid.ico")
+    set(INSTALLER_ICON "StandAlone/share/themes/MulticamTheme/icons/hicolor/256x256/multicam.ico")
     set(RUN_PROGRAM "${MAIN_EXECUTABLE}")
     set(PROGRAM_ARGS "-c \"%%~dp0${DATAROOTDIR}\\config\"")
     set(OUTPUT_QML_DIR ${LIBDIR}/qt/qml)
@@ -75,12 +75,12 @@ elseif (WIN32)
 else ()
     set(TARGET_PLATFORM posix)
     set(BUILD_INFO_FILE ${DATAROOTDIR}/build-info.txt)
-    set(MAIN_EXECUTABLE ${BINDIR}/webcamoid)
+    set(MAIN_EXECUTABLE ${BINDIR}/Multicam)
     set(APP_LIBDIR ${LIBDIR})
-    set(QTIFW_TARGET_DIR "\@HomeDir\@/Webcamoid")
+    set(QTIFW_TARGET_DIR "\@HomeDir\@/Multicam")
     set(OUTPUT_FORMATS "AppImage, CompressedTarXz, QtIFW, DebPackage, RpmPackage")
-    set(INSTALLER_ICON "StandAlone/share/themes/WebcamoidTheme/icons/hicolor/128x128/webcamoid.png")
-    set(RUN_PROGRAM "\@TargetDir\@/webcamoid.sh")
+    set(INSTALLER_ICON "StandAlone/share/themes/MulticamTheme/icons/hicolor/128x128/multicam.png")
+    set(RUN_PROGRAM "\@TargetDir\@/Multicam.sh")
     set(OUTPUT_QML_DIR ${LIBDIR}/qt/qml)
     set(OUTPUT_QT_PLUGINS_DIR ${LIBDIR}/qt/plugins)
     set(QT_CONF_FILE ${BINDIR}/qt.conf)
@@ -202,7 +202,7 @@ else ()
 endif()
 
 set(DEB_INSTALL_ROOT_PREFIX "usr" CACHE STRING "Install prefix relative to the system")
-set(DEB_INSTALL_PREFIX "usr/share/webcamoid" CACHE STRING "Install prefix for DEB packages data files")
+set(DEB_INSTALL_PREFIX "usr/share/multicam" CACHE STRING "Install prefix for DEB packages data files")
 set(RPM_INSTALL_PREFIX "${DEB_INSTALL_PREFIX}" CACHE STRING "Install prefix for RPM packages data files")
 
 if (TARGET_ARCH STREQUAL "x64")
@@ -231,10 +231,10 @@ set(DEB_LINKS "")
 
 if (UNIX AND NOT APPLE AND NOT ANDROID)
     set(DEB_LINKS_PATHS
-        ${BINDIR}/webcamoid
-        ${DATAROOTDIR}/applications/webcamoid.desktop
+        ${BINDIR}/Multicam
+        ${DATAROOTDIR}/applications/Multicam.desktop
         ${DATAROOTDIR}/metainfo/${APP_IDENTIFIER}.metainfo.xml
-        ${CMAKE_INSTALL_MANDIR}/man1/webcamoid.1.gz
+        ${CMAKE_INSTALL_MANDIR}/man1/Multicam.1.gz
         ${LICENSEDIR}/COPYING)
 
     set(ICONS_SIZE
@@ -249,7 +249,7 @@ if (UNIX AND NOT APPLE AND NOT ANDROID)
         "scalable")
 
     foreach (SIZE IN LISTS ICONS_SIZE)
-        list(APPEND DEB_LINKS_PATHS ${DATAROOTDIR}/icons/hicolor/${SIZE}/apps/webcamoid.png)
+        list(APPEND DEB_LINKS_PATHS ${DATAROOTDIR}/icons/hicolor/${SIZE}/apps/multicam.png)
     endforeach ()
 
     set(DEB_LINKS_PATHS_TEMP "dummy")
@@ -283,7 +283,7 @@ else ()
 endif ()
 
 if (UNIX AND NOT ANDROID AND NOT (APPLE OR FAKE_APPLE))
-    install(FILES webcamoid.desktop DESTINATION ${DATAROOTDIR}/applications)
+    install(FILES Multicam.desktop DESTINATION ${DATAROOTDIR}/applications)
     install(FILES ${APP_IDENTIFIER}.metainfo.xml DESTINATION ${DATAROOTDIR}/metainfo)
 endif ()
 
@@ -306,5 +306,6 @@ if (NOT TARGET uninstall)
 
     install(CODE "list(APPEND CMAKE_INSTALL_MANIFEST_FILES \"\${CMAKE_INSTALL_PREFIX}/${AKPLUGINSDIR}\")")
     install(CODE "list(APPEND CMAKE_INSTALL_MANIFEST_FILES \"\${CMAKE_INSTALL_PREFIX}/${LICENSEDIR}\")")
-    install(CODE "list(APPEND CMAKE_INSTALL_MANIFEST_FILES \"\${CMAKE_INSTALL_PREFIX}/${DATAROOTDIR}/webcamoid\")")
+    install(CODE "list(APPEND CMAKE_INSTALL_MANIFEST_FILES \"\${CMAKE_INSTALL_PREFIX}/${DATAROOTDIR}/Multicam\")")
 endif ()
+

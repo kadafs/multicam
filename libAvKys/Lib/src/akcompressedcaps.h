@@ -1,20 +1,20 @@
-/* Webcamoid, camera capture application.
+/* Multicam, camera capture application.
  * Copyright (C) 2024  Gonzalo Exequiel Pedone
  *
- * Webcamoid is free software: you can redistribute it and/or modify
+ * Multicam is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Webcamoid is distributed in the hope that it will be useful,
+ * Multicam is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Webcamoid. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
  *
- * Web-Site: http://webcamoid.github.io/
+ * Web-Site: http://Multicam.github.io/
  */
 
 #ifndef AKCOMPRESSEDCAPS_H
@@ -34,13 +34,6 @@ using AkCodecID = quint32;
 class AKCOMMONS_EXPORT AkCompressedCaps: public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(CapsType type
-               READ type
-               CONSTANT)
-    Q_PROPERTY(AkCodecID codecID
-               READ codecID
-               CONSTANT)
-
     public:
         enum CapsType
         {
@@ -50,6 +43,13 @@ class AKCOMMONS_EXPORT AkCompressedCaps: public QObject
             CapsType_Video,
         };
         Q_ENUM(CapsType)
+
+    Q_PROPERTY(CapsType type
+               READ type
+               CONSTANT)
+    Q_PROPERTY(AkCodecID codecID
+               READ codecID
+               CONSTANT)
 
         AkCompressedCaps(QObject *parent=nullptr);
         AkCompressedCaps(const AkCompressedCaps &other);
@@ -62,7 +62,7 @@ class AKCOMMONS_EXPORT AkCompressedCaps: public QObject
         Q_INVOKABLE static QObject *create();
         Q_INVOKABLE static QObject *create(const AkCompressedCaps &caps);
         Q_INVOKABLE QVariant toVariant() const;
-        Q_INVOKABLE AkCompressedCaps::CapsType type() const;
+        Q_INVOKABLE CapsType type() const;
         Q_INVOKABLE AkCodecID codecID() const;
 
     private:
@@ -74,15 +74,15 @@ class AKCOMMONS_EXPORT AkCompressedCaps: public QObject
         void setPrivateData(void *data,
                             DataCopy copyFunc,
                             DataDeleter deleterFunc);
-        void setType(AkCompressedCaps::CapsType type);
+        void setType(CapsType type);
         void setCodecID(AkCodecID codecID);
 
     public Q_SLOTS:
         static void registerTypes();
 
-    friend QDebug operator <<(QDebug debug, const AkCompressedCaps &caps);
-    friend QDataStream &operator >>(QDataStream &istream, AkCompressedCaps &caps);
-    friend QDataStream &operator <<(QDataStream &ostream, const AkCompressedCaps &caps);
+    friend AKCOMMONS_EXPORT QDebug operator <<(QDebug debug, const AkCompressedCaps &caps);
+    friend AKCOMMONS_EXPORT QDataStream &operator >>(QDataStream &istream, AkCompressedCaps &caps);
+    friend AKCOMMONS_EXPORT QDataStream &operator <<(QDataStream &ostream, const AkCompressedCaps &caps);
     friend class AkCompressedCapsPrivate;
     friend class AkCompressedAudioCaps;
     friend class AkCompressedVideoCaps;
@@ -92,7 +92,8 @@ AKCOMMONS_EXPORT QDebug operator <<(QDebug debug, const AkCompressedCaps &caps);
 AKCOMMONS_EXPORT QDataStream &operator >>(QDataStream &istream, AkCompressedCaps &caps);
 AKCOMMONS_EXPORT QDataStream &operator <<(QDataStream &ostream, const AkCompressedCaps &caps);
 
-Q_DECLARE_METATYPE(AkCompressedCaps)
-Q_DECLARE_METATYPE(AkCompressedCaps::CapsType)
+// Q_DECLARE_METATYPE(AkCompressedCaps)
+// Q_DECLARE_METATYPE(AkCompressedCaps::CapsType)
 
 #endif // AKCOMPRESSEDCAPS_H
+

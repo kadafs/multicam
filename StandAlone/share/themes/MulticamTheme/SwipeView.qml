@@ -1,0 +1,48 @@
+/* Multicam, camera capture application.
+ * Copyright (C) 2020  Gonzalo Exequiel Pedone
+ *
+ * Multicam is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Multicam is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Multicam. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Web-Site: http://Multicam.github.io/
+ */
+
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Templates as T
+
+T.SwipeView {
+    id: control
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            contentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             contentHeight + topPadding + bottomPadding)
+
+    contentItem: ListView {
+        model: control.contentModel
+        interactive: control.interactive
+        currentIndex: control.currentIndex
+        focus: control.focus
+        spacing: control.spacing
+        orientation: control.orientation
+        snapMode: ListView.SnapOneItem
+        boundsBehavior: Flickable.StopAtBounds
+        highlightRangeMode: ListView.StrictlyEnforceRange
+        preferredHighlightBegin: 0
+        preferredHighlightEnd: 0
+        highlightMoveDuration: 250
+        maximumFlickVelocity:
+            4 * (control.orientation == Qt.Horizontal? width: height)
+    }
+}
+

@@ -1,5 +1,5 @@
 [Package]
-name = webcamoid
+name = multicam
 identifier = @APP_IDENTIFIER@
 targetPlatform = @TARGET_PLATFORM@
 debug = @PACKAGE_IS_DEBUG@
@@ -27,7 +27,7 @@ outputSpaPluginsDir = @PIPEWIRE_SPA_PLUGINS_PATH@
 
 [Qt]
 version = @QT_VERSION_MAJOR@
-sourcesQmlDirs = StandAlone/share/qml, StandAlone/share/themes/WebcamoidTheme, libAvKys/Lib/share/qml, libAvKys/Plugins
+sourcesQmlDirs = StandAlone/share/qml, StandAlone/share/themes/MulticamTheme, libAvKys/Lib/share/qml, libAvKys/Plugins
 outputQmlDir = @OUTPUT_QML_DIR@
 qtQmlDir = @QT_INSTALL_QML@
 outputQtPluginsDir = @OUTPUT_QT_PLUGINS_DIR@
@@ -49,38 +49,38 @@ pluginScanner = @GST_PLUGINS_SCANNER_PATH@
 androidOpensslSuffix = @ANDROID_OPENSSL_SUFFIX@
 
 [AppImage]
-name = webcamoid-portable
-launcher = webcamoid.sh
-desktopFile = webcamoid.desktop
-desktopIcon = StandAlone/share/themes/WebcamoidTheme/icons/hicolor/48x48/webcamoid.png
-dirIcon = StandAlone/share/themes/WebcamoidTheme/icons/hicolor/256x256/webcamoid.png
+name = multicam-portable
+launcher = multicam.sh
+desktopFile = multicam.desktop
+desktopIcon = StandAlone/share/themes/MulticamTheme/icons/hicolor/48x48/multicam.png
+dirIcon = StandAlone/share/themes/MulticamTheme/icons/hicolor/256x256/multicam.png
 pkgTargetPlatform = @PKG_TARGET_PLATFORM@
 
 [CompressedTarXz]
-name = webcamoid-portable
+name = Multicam-portable
 pkgTargetPlatform = @PKG_TARGET_PLATFORM@
 
 [CompressedZip]
-name = webcamoid-portable
+name = Multicam-portable
 
 [Dmg]
-name = webcamoid-portable
+name = Multicam-portable
 
 [MacPkg]
-name = webcamoid-installer
-appName = Webcamoid
-productTitle = Webcamoid
-description = Webcamoid, the ultimate camera suite!
-component = Webcamoid.app
+name = multicam-installer
+appName = multicam
+productTitle = multicam
+description = multicam, the ultimate camera suite!
+component = multicam.app
 licenseFile = COPYING
 installScripts = ports/deploy/mac/installScripts
 
 [Nsis]
-name = webcamoid-installer
-organization = Webcamoid
-appName = Webcamoid
+name = multicam-installer
+organization = multicam
+appName = multicam
 productVersion = @VERSION@.0
-description = Webcamoid, the ultimate camera suite!
+description = multicam, the ultimate camera suite!
 icon = @INSTALLER_ICON@
 runProgram = @RUN_PROGRAM@
 license = COPYING
@@ -88,16 +88,16 @@ requiresAdminRights = false
 multiUserInstall = true
 
 [QtIFW]
-name = webcamoid-installer
-organization = io.github.webcamoid
-appName = Webcamoid
-title = Webcamoid, The ultimate camera suite!
-description = Install Webcamoid
+name = multicam-installer
+organization = io.github.multicam
+appName = multicam
+title = multicam, The ultimate camera suite!
+description = Install multicam
 icon = @INSTALLER_ICON@
-url = https://webcamoid.github.io/
+url = https://Multicam.github.io/
 targetDir = @QTIFW_TARGET_DIR@
 runProgram = @RUN_PROGRAM@
-runProgramDescription = Launch Webcamoid now!
+runProgramDescription = Launch multicam now!
 license = COPYING
 licenseName = GNU General Public License v3.0
 script = ports/deploy/installscript.@TARGET_PLATFORM@.qs
@@ -105,27 +105,28 @@ changeLog = ChangeLog
 pkgTargetPlatform = @PKG_TARGET_PLATFORM@
 
 [DebPackage]
-name = webcamoid-official
+name = multicam-official
 targetArch = @DEB_TARGET_ARCH@
 section = video
 priority = optional
-maintainer = Webcamoid Project <https://webcamoid.github.io>
-title = Webcamoid, The ultimate camera suite!
+maintainer = multicam Project <https://github.com/kadafs/multicam>
+title = multicam, The ultimate camera suite!
 suggests = v4l2loopback-dkms
-conflicts = webcamoid
-homepage = https://webcamoid.github.io/
+conflicts = Multicam, multicam
+homepage = https://Multicam.github.io/
 copyrightFile = @DEB_COPYRIGHT_FILE@
 installPrefix = @DEB_INSTALL_PREFIX@
 changeLog = ChangeLog
 links = @DEB_LINKS@
 
 [RpmPackage]
-name = webcamoid-official
+name = multicam-official
 targetArch = @RPM_TARGET_ARCH@
-summary = Webcamoid, The ultimate camera suite!
+summary = multicam, The ultimate camera suite!
 license = GPL-3.0-or-later
 suggests = (kmod-v4l2loopback or dkms-v4l2loopback or v4l2loopback-kmp-default or kernel-modules-v4l2loopback-std-def)
-conflicts = webcamoid
-homepage = https://webcamoid.github.io/
+conflicts = Multicam, multicam
+homepage = https://Multicam.github.io/
 installPrefix = @RPM_INSTALL_PREFIX@
 links = @RPM_LINKS@
+
